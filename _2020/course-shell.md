@@ -1,6 +1,6 @@
 ---
 layout: lecture
-title: "Course overview + the shell"
+title: "কোর্স ওভারভিউ  + the shell"
 date: 2020-01-13
 ready: true
 video:
@@ -10,23 +10,25 @@ video:
 
 # Motivation
 
-As computer scientists, we know that computers are great at aiding in
-repetitive tasks. However, far too often, we forget that this applies
-just as much to our _use_ of the computer as it does to the computations
-we want our programs to perform. We have a vast range of tools
-available at our fingertips that enable us to be more productive and
-solve more complex problems when working on any computer-related
-problem. Yet many of us utilize only a small fraction of those tools; we
-only know enough magical incantations by rote to get by, and blindly
-copy-paste commands from the internet when we get stuck.
+# Motivation
 
-This class is an attempt to address this.
+Computer scientist হিসেবে আমরা জানি যে কম্পিউটার খুবই দক্ষ repetitive
+কাজে সাহায্য করতে।  কিন্তু অনেক সময় আমরা ভুলে যাই যে ইটা যতটা আমাদের computer
+_ব্যাবহারের_ জন্য প্রযোজ্য ততটা ইটা প্রযোজ্য কম্পিউটেশন এর উপর যেটা আমরা
+আমাদের প্রোগ্রাম দ্বারা করতে চাই।
 
-We want to teach you how to make the most of the tools you know, show
-you new tools to add to your toolbox, and hopefully instill in you some
-excitement for exploring (and perhaps building) more tools on your own.
-This is what we believe to be the missing semester from most Computer
-Science curricula.
+আমাদের কাছে অনেক tools উপলব্ধ আছে যেটা আমাদের বেশি productive করে আর বেশি জটিল problem সমাধান করার জন্য সাহায্য করে যখন আমরা যেকোনো computer সংক্রান্ত problem এর উপর কাজ করি। 
+
+তবুও আমাদের মধ্যে অনেকেই এই tools গুলোর মধ্যে খুব অল্প পরিমানের tools ব্যবহার করি। 
+
+আমরা যতটা জানি তা শুধু আমাদের কোনোরকমে প্রয়োজন মেটায় আর যখন আমরা আটকে যাই তখন আমরা অন্ধর মতো internet
+থেকে command copy-paste করি। 
+ 
+
+এই ক্লাস তা হচ্ছে ইটা নিয়েই কথা বলার এক প্রচেষ্টা। 
+
+আমরা শেখাতে চাই কিভাবে যে টুলস গুলো তোমরা জানো  সবচেয়ে ভালো ভাবে ব্যবহার করতে হয় ,
+আমরা দেখাব নতুন টুলস, তোমার টুল বাক্স  তে অ্যাড করার জন্য, এবং আশাকরি তোমার মধ্যে একটা এক্সসাইটমেন্ট দেওয়ার আরো টুলস এক্সপ্লোর করার জন্য নিজের থেকে আর সম্ভবত নিজে বানাবে। এটাই আমরা মনে করি মিসিং সেমেস্ত্র অধিকাংশ কম্পিউটার সাইন্স পাঠ্যক্রম থেকে। 
 
 # Class structure
 
@@ -414,3 +416,4 @@ far, and we will try to help you out.
  1. Write a command that reads out your laptop battery's power level or your
     desktop machine's CPU temperature from `/sys`. Note: if you're a macOS
     user, your OS doesn't have sysfs, so you can skip this exercise.
+
