@@ -8,25 +8,25 @@ video:
   id: l812pUnKxME
 ---
 
-A golden rule in programming is that code does not do what you expect it to do, but what you tell it to do.
-Bridging that gap can sometimes be a quite difficult feat.
-In this lecture we are going to cover useful techniques for dealing with buggy and resource hungry code: debugging and profiling.
+প্রোগ্রামিং-এর একটি সুবর্ণ নিয়ম হল যে কোড আপনি যা করতে চান তা করে না, বরং আপনি যা করতে বলেন তা করে।
+এই ব্যবধানটি পূরণ করা কখনও কখনও বেশ কঠিন কাজ হতে পারে।
+এই বক্তৃতায় আমরা বাগ এবং রিসোর্স ক্ষুধার্ত কোডের সাথে মোকাবিলা করার জন্য দরকারী কৌশলগুলি কভার করতে যাচ্ছিঃ ডিবাগিং এবং প্রোফাইলিং।
 
-# Debugging
+#ডিবাগিং
 
-## Printf debugging and Logging
+#প্রিন্টফ ডিবাগিং এবং লগিং
 
-"The most effective debugging tool is still careful thought, coupled with judiciously placed print statements" — Brian Kernighan, _Unix for Beginners_.
+"সবচেয়ে কার্যকর ডিবাগিং টুল হল এখনও সতর্কতার সাথে চিন্তা করা, যুক্তিসঙ্গতভাবে মুদ্রণ বিবৃতি সহ"-ব্রায়ান কের্নিঘান, _ ইউনিক্স ফর বিগিনার্স।
 
-A first approach to debug a program is to add print statements around where you have detected the problem, and keep iterating until you have extracted enough information to understand what is responsible for the issue.
+কোনও প্রোগ্রাম ডিবাগ করার প্রথম পদ্ধতি হল যেখানে আপনি সমস্যাটি সনাক্ত করেছেন তার চারপাশে মুদ্রণ বিবৃতি যুক্ত করা এবং সমস্যার জন্য কী দায়ী তা বোঝার জন্য পর্যাপ্ত তথ্য বের না করা পর্যন্ত পুনরাবৃত্তি করা।
 
-A second approach is to use logging in your program, instead of ad hoc print statements. Logging is better than regular print statements for several reasons:
+দ্বিতীয় পদ্ধতিটি হল অ্যাডহক প্রিন্ট স্টেটমেন্টের পরিবর্তে আপনার প্রোগ্রামে লগ ইন করা। লগিং বিভিন্ন কারণে নিয়মিত মুদ্রণ বিবৃতির চেয়ে ভালঃ
 
-- You can log to files, sockets or even remote servers instead of standard output.
-- Logging supports severity levels (such as INFO, DEBUG, WARN, ERROR, &c), that allow you to filter the output accordingly.
-- For new issues, there's a fair chance that your logs will contain enough information to detect what is going wrong.
+- আপনি স্ট্যান্ডার্ড আউটপুটের পরিবর্তে ফাইল, সকেট বা এমনকি দূরবর্তী সার্ভারে লগ করতে পারেন।
+লগিং তীব্রতার মাত্রা (যেমন তথ্য, ডিবাগ, সতর্কতা, ত্রুটি, এবং সি) সমর্থন করে যা আপনাকে সেই অনুযায়ী আউটপুট ফিল্টার করতে দেয়।
+- নতুন সমস্যাগুলির জন্য, আপনার লগগুলিতে কী ভুল হচ্ছে তা সনাক্ত করার জন্য পর্যাপ্ত তথ্য থাকার যথেষ্ট সম্ভাবনা রয়েছে।
 
-[Here](/static/files/logger.py) is an example code that logs messages:
+[এখানে] (/static/files/logger. py) একটি উদাহরণ কোড যা বার্তা লগ করেঃ
 
 ```bash
 $ python logger.py
@@ -39,11 +39,12 @@ $ python logger.py color
 # Color formatted output
 ```
 
-One of my favorite tips for making logs more readable is to color code them.
-By now you probably have realized that your terminal uses colors to make things more readable. But how does it do it?
-Programs like `ls` or `grep` are using [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code), which are special sequences of characters to indicate your shell to change the color of the output. For example, executing `echo -e "\e[38;2;255;0;0mThis is red\e[0m"` prints the message `This is red` in red on your terminal, as long as it supports [true color](https://github.com/termstandard/colors#truecolor-support-in-output-devices). If your terminal doesn't support this (e.g. macOS's Terminal.app), you can use the more universally supported escape codes for 16 color choices, for example `echo -e "\e[31;1mThis is red\e[0m"`.
+লগগুলিকে আরও পাঠযোগ্য করার জন্য আমার প্রিয় পরামর্শগুলির মধ্যে একটি হল সেগুলিকে রঙিন কোড করা।
+এতদিনে আপনি সম্ভবত বুঝতে পেরেছেন যে আপনার টার্মিনালটি জিনিসগুলিকে আরও পাঠযোগ্য করে তুলতে রঙ ব্যবহার করে। কিন্তু এটা কিভাবে করা হয়?
+'ls' বা 'grep' এর মতো প্রোগ্রামগুলি [ANSI পালানোর কোড] (https://en.wikpedia.org/wiki/ANSI_escape_code) ব্যবহার করছে যা আপনার শেলকে আউটপুটের রঙ পরিবর্তন করতে নির্দেশ করার জন্য অক্ষরের বিশেষ ক্রম। উদাহরণস্বরূপ, 'echo-e "এক্সিকিউট করা হচ্ছে [38; 2; 255; 0; 0mএটি লাল\e [0m "'আপনার টার্মিনালে লাল রঙে' এটি লাল 'বার্তাটি প্রিন্ট করে, যতক্ষণ না এটি [সত্য রঙ] সমর্থন করে (https://github.com/ termstandard/colors #truecolor-support-in-output-devices) যদি আপনার টার্মিনাল এটি সমর্থন করে না (e.g। macOS এর Terminal.app) আপনি 16 টি রঙ পছন্দের জন্য আরও সর্বজনীনভাবে সমর্থিত পালানোর কোডগুলি ব্যবহার করতে পারেন, উদাহরণস্বরূপ 'echo-e' \e [31; 1m]এটি লাল\e [0m "'।
 
-The following script shows how to print many RGB colors into your terminal (again, as long as it supports true color).
+নিচের স্ক্রিপ্টটি দেখায় কিভাবে আপনার টার্মিনালে অনেক আরজিবি রঙ মুদ্রণ করা যায়। (যতক্ষণ এটি true color সমর্থন করে).
+
 
 ```bash
 #!/usr/bin/env bash
@@ -56,24 +57,24 @@ for R in $(seq 0 20 255); do
 done
 ```
 
-## Third party logs
+## তৃতীয় পক্ষের লগ
 
-As you start building larger software systems you will most probably run into dependencies that run as separate programs.
-Web servers, databases or message brokers are common examples of this kind of dependencies.
-When interacting with these systems it is often necessary to read their logs, since client side error messages might not suffice.
+আপনি যখন বৃহত্তর সফ্টওয়্যার সিস্টেম তৈরি করতে শুরু করবেন তখন আপনি সম্ভবত নির্ভরশীলতার সম্মুখীন হবেন যা পৃথক প্রোগ্রাম হিসাবে চলে।
+ওয়েব সার্ভার, ডাটাবেস বা বার্তা দালাল এই ধরনের নির্ভরতার সাধারণ উদাহরণ।
+এই সিস্টেমগুলির সাথে যোগাযোগ করার সময় প্রায়শই তাদের লগগুলি পড়া প্রয়োজন, কারণ ক্লায়েন্ট পার্শ্ব ত্রুটি বার্তা যথেষ্ট নাও হতে পারে।
 
-Luckily, most programs write their own logs somewhere in your system.
-In UNIX systems, it is commonplace for programs to write their logs under `/var/log`.
-For instance, the [NGINX](https://www.nginx.com/) webserver places its logs under `/var/log/nginx`.
-More recently, systems have started using a **system log**, which is increasingly where all of your log messages go.
-Most (but not all) Linux systems use `systemd`, a system daemon that controls many things in your system such as which services are enabled and running.
-`systemd` places the logs under `/var/log/journal` in a specialized format and you can use the [`journalctl`](https://www.man7.org/linux/man-pages/man1/journalctl.1.html) command to display the messages.
-Similarly, on macOS there is still `/var/log/system.log` but an increasing number of tools use the system log, that can be displayed with [`log show`](https://www.manpagez.com/man/1/log/).
-On most UNIX systems you can also use the [`dmesg`](https://www.man7.org/linux/man-pages/man1/dmesg.1.html) command to access the kernel log.
+সৌভাগ্যবশত, বেশিরভাগ প্রোগ্রাম আপনার সিস্টেমের কোথাও তাদের নিজস্ব লগ লেখে।
+ইউনিক্স সিস্টেমে, প্রোগ্রামগুলির জন্য '/var/log' এর অধীনে তাদের লগ লেখা সাধারণ বিষয়।
+উদাহরণস্বরূপ, [NGINX] (https://www.nginx.com/) ওয়েব সার্ভার তার লগগুলি '/var/log/nginx' এর অধীনে রাখে।
+আরও সম্প্রতি, সিস্টেমগুলি একটি * * সিস্টেম লগ * * ব্যবহার করতে শুরু করেছে, যা ক্রমবর্ধমান যেখানে আপনার সমস্ত লগ বার্তা যায়।
+বেশিরভাগ (তবে সবগুলি নয়) লিনাক্স সিস্টেমে 'systemd' ব্যবহার করা হয়, একটি সিস্টেম ডেমন যা আপনার সিস্টেমে অনেক কিছু নিয়ন্ত্রণ করে যেমন কোন পরিষেবাগুলি সক্রিয় এবং চলছে।
+'systemd' একটি বিশেষ বিন্যাসে '/var/log/জার্নাল' এর অধীনে লগগুলি স্থাপন করে এবং আপনি ['Journalctl'] (https://www.man7.org/linux/man-pages/man1/journalctl.1.html) কমান্ডটি বার্তা প্রদর্শন করতে ব্যবহার করতে পারেন।
+একইভাবে, ম্যাকোসে এখনও '/var/log/system. log' রয়েছে তবে ক্রমবর্ধমান সংখ্যক সরঞ্জাম সিস্টেম লগ ব্যবহার করে, যা ['log show'] এর সাথে প্রদর্শিত হতে পারে (https://www.manpagez.com/man/1/log/)
+বেশিরভাগ ইউনিক্স সিস্টেমে আপনি কার্নেল লগ অ্যাক্সেস করতে ['dmesg'] (https://www.man7.org/linux/man-pages/man1/dmesg.1.html) কমান্ড ব্যবহার করতে পারেন।
 
-For logging under the system logs you can use the [`logger`](https://www.man7.org/linux/man-pages/man1/logger.1.html) shell program.
-Here's an example of using `logger` and how to check that the entry made it to the system logs.
-Moreover, most programming languages have bindings logging to the system log.
+সিস্টেম লগ অধীনে লগিং জন্য আপনি ব্যবহার করতে পারেন ['লগার'] (https://www.man7.org/linux/man-pages/man1/logger.1.html) শেল প্রোগ্রাম।
+এখানে 'লগার' ব্যবহার করার একটি উদাহরণ এবং কীভাবে এন্ট্রিটি সিস্টেম লগগুলিতে তৈরি হয়েছে কিনা তা পরীক্ষা করা যায়।
+অধিকন্তু, বেশিরভাগ প্রোগ্রামিং ভাষায় সিস্টেম লগ-এ বাইন্ডিং লগিং থাকে।
 
 ```bash
 logger "Hello Logs"
@@ -83,35 +84,37 @@ log show --last 1m | grep Hello
 journalctl --since "1m ago" | grep Hello
 ```
 
-As we saw in the data wrangling lecture, logs can be quite verbose and they require some level of processing and filtering to get the information you want.
-If you find yourself heavily filtering through `journalctl` and `log show` you can consider using their flags, which can perform a first pass of filtering of their output.
-There are also some tools like  [`lnav`](http://lnav.org/), that provide an improved presentation and navigation for log files.
+আমরা যেমন ডেটা রেঙ্গলিং বক্তৃতায় দেখেছি, লগগুলি বেশ শব্দবহুল হতে পারে এবং আপনি যে তথ্য চান তা পেতে তাদের কিছু স্তরের প্রক্রিয়াকরণ এবং ফিল্টারিং প্রয়োজন।
+আপনি যদি 'জার্নালেক্টল' এবং 'লগ শো'-এর মাধ্যমে নিজেকে প্রচুর পরিমাণে ফিল্টার করতে দেখেন তবে আপনি তাদের ফ্ল্যাগগুলি ব্যবহার করার কথা বিবেচনা করতে পারেন, যা তাদের আউটপুট ফিল্টার করার প্রথম পাস সম্পাদন করতে পারে।
+['lnav'] (http://lnav.org/) এর মতো কিছু সরঞ্জাম রয়েছে যা লগ ফাইলগুলির জন্য একটি উন্নত উপস্থাপনা এবং নেভিগেশন সরবরাহ করে।
 
-## Debuggers
+##ডিবাগারস
 
-When printf debugging is not enough you should use a debugger.
-Debuggers are programs that let you interact with the execution of a program, allowing the following:
+প্রিন্টএফ ডিবাগিং যথেষ্ট না হলে আপনার একটি ডিবাগার ব্যবহার করা উচিত।
+ডিবাগার হল এমন প্রোগ্রাম যা আপনাকে একটি প্রোগ্রাম সম্পাদনের সাথে যোগাযোগ করতে দেয়, যা নিম্নলিখিতগুলিকে অনুমতি দেয়ঃ
 
-- Halt execution of the program when it reaches a certain line.
-- Step through the program one instruction at a time.
-- Inspect values of variables after the program crashed.
-- Conditionally halt the execution when a given condition is met.
-- And many more advanced features
+- একটি নির্দিষ্ট লাইনে পৌঁছলে প্রোগ্রামের এক্সিকিউশন বন্ধ করুন।
+- প্রোগ্রামের মাধ্যমে একবারে একটি নির্দেশের মাধ্যমে পদক্ষেপ নিন।
+- প্রোগ্রাম ক্র্যাশ হওয়ার পর ভেরিয়েবলের মান পরীক্ষা করুন।
+- একটি নির্দিষ্ট শর্ত পূরণ হলে শর্তসাপেক্ষে মৃত্যুদণ্ড কার্যকর করা বন্ধ করুন।
+- এবং আরও অনেক উন্নত বৈশিষ্ট্য
 
-Many programming languages come with some form of debugger.
-In Python this is the Python Debugger [`pdb`](https://docs.python.org/3/library/pdb.html).
+অনেক প্রোগ্রামিং ভাষা কিছু ধরনের ডিবাগার নিয়ে আসে।
+পাইথনে এটি পাইথন ডিবাগার ['pdb'] (https://docs.python.org/3/library/pdb.html)
 
-Here is a brief description of some of the commands `pdb` supports:
+এখানে 'পিডিবি' সমর্থিত কয়েকটি কমান্ডের সংক্ষিপ্ত বিবরণ দেওয়া হলঃ
 
-- **l**(ist) - Displays 11 lines around the current line or continue the previous listing.
-- **s**(tep) - Execute the current line, stop at the first possible occasion.
-- **n**(ext) - Continue execution until the next line in the current function is reached or it returns.
-- **b**(reak) - Set a breakpoint (depending on the argument provided).
-- **p**(rint) - Evaluate the expression in the current context and print its value. There's also **pp** to display using [`pprint`](https://docs.python.org/3/library/pprint.html) instead.
-- **r**(eturn) - Continue execution until the current function returns.
-- **q**(uit) - Quit the debugger.
+- * * l * * (IST)-বর্তমান লাইনের চারপাশে 11 টি লাইন প্রদর্শন করে বা পূর্ববর্তী তালিকাটি চালিয়ে যায়।
+- * * এস * * (টেপ)-বর্তমান লাইনটি কার্যকর করুন, প্রথম সম্ভাব্য অনুষ্ঠানে থামুন।
+- * * n * * (ext)-বর্তমান ফাংশনের পরবর্তী লাইনটি পৌঁছানো বা এটি ফিরে না আসা পর্যন্ত কার্যকর করা চালিয়ে যান।
+- * * বি * * (রেক)-একটি ব্রেকপয়েন্ট সেট করুন (depending on the argument provided).
+- * * পি * * (রিন্ট)-বর্তমান প্রসঙ্গে অভিব্যক্তিটি মূল্যায়ন করুন এবং এর মান মুদ্রণ করুন। এর পরিবর্তে ['pprint'] (https://docs.python.org/3/library/pprint.html) ব্যবহার করে প্রদর্শন করতে * * pp * * রয়েছে।
+- * * r * * (eturn)-বর্তমান ফাংশন ফেরত না হওয়া পর্যন্ত মৃত্যুদন্ড কার্যকর করা চালিয়ে যান।
+- * * q * * (uit)-ডিবাগার বন্ধ করুন।
 
-Let's go through an example of using `pdb` to fix the following buggy python code. (See the lecture video).
+আসুন নিম্নলিখিত বাগি পাইথন কোডটি ঠিক করতে 'পিডিবি' ব্যবহার করার একটি উদাহরণ দেখি। (See the lecture video).
+
+
 
 ```python
 def bubble_sort(arr):
@@ -127,11 +130,14 @@ print(bubble_sort([4, 2, 1, 8, 7, 6]))
 ```
 
 
-Note that since Python is an interpreted language we can use the `pdb` shell to execute commands and to execute instructions.
-[`ipdb`](https://pypi.org/project/ipdb/) is an improved `pdb` that uses the [`IPython`](https://ipython.org) REPL enabling tab completion, syntax highlighting, better tracebacks, and better introspection while retaining the same interface as the `pdb` module.
+লক্ষ্য করুন যে যেহেতু পাইথন একটি ব্যাখ্যামূলক ভাষা তাই আমরা কমান্ডগুলি কার্যকর করতে এবং নির্দেশাবলী কার্যকর করতে 'পিডিবি' শেল ব্যবহার করতে পারি।
+['ipdb'] (https://pypi.org/project/ipdb/) একটি উন্নত 'পিডিবি' যা ['IPython'] (https://ipython.org) আরইপিএল ট্যাব সমাপ্তি, সিনট্যাক্স হাইলাইটিং, আরও ভাল ট্রেসব্যাকস এবং আরও ভাল অন্তর্দৃষ্টি সক্ষম করে যখন 'পিডিবি' মডিউল হিসাবে একই ইন্টারফেস ধরে রাখে।
 
-For more low level programming you will probably want to look into [`gdb`](https://www.gnu.org/software/gdb/) (and its quality of life modification [`pwndbg`](https://github.com/pwndbg/pwndbg)) and [`lldb`](https://lldb.llvm.org/).
-They are optimized for C-like language debugging but will let you probe pretty much any process and get its current machine state: registers, stack, program counter, &c.
+আরও নিম্ন স্তরের প্রোগ্রামিংয়ের জন্য আপনি সম্ভবত ['gdb'] (https://www.gnu.org/software/gdb/) (এবং এর জীবন পরিবর্তনের মান ['pwndbg'] (https://github.com/pwndbg/pwndbg)) এবং ['lldb'] (https://lldb.llvm.org/)
+এগুলি সি-এর মতো ভাষা ডিবাগিংয়ের জন্য অপ্টিমাইজ করা হয়েছে তবে আপনাকে যে কোনও প্রক্রিয়া অনুসন্ধান করতে এবং এর বর্তমান মেশিন অবস্থা পেতে দেবেঃ রেজিস্টার, স্ট্যাক, প্রোগ্রাম কাউন্টার এবং সি।
+
+
+
 
 
 ## Specialized Tools
