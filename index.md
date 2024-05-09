@@ -13,7 +13,7 @@ nositetitle: true
 {% comment %}
 # Registration
 
-Sign up করুন  IAP 2020 class  এর জন্য  এই [registration form](https://forms.gle/TD1KnwCSV52qexVt9) form  fill-up  করে।  
+Sign up করুন  IAP 2020 class  এর জন্য  এই [registration form](https://forms.gle/TD1KnwCSV52qexVt9) form  fill-up  করে।
 {% endcomment %}
 
 # সময়সূচী
@@ -39,16 +39,16 @@ Sign up করুন  IAP 2020 class  এর জন্য  এই [registration 
 {% endfor %}
 </ul>
 
-বক্তৃতাগুলির ভিডিও রেকর্ডিং [ইউটিউবে](https://www.youtube.com/playlist?list=PlyzOVJj3bHQuloKGG59rS43e29ro7I57J)পাওয়া যায়
+বক্তৃতাগুলির ভিডিও রেকর্ডিং [ইউটিউবে](https://www.youtube.com/playlist?list=PlyzOVJj3bHQuloKGG59rS43e29ro7I57J) পাওয়া যায়
 
 #ক্লাস সম্পর্কে
 
 **স্টাফ**: এই ক্লাস সহ-শেখানো হয় [Anish](https://www.anishathalye.com/) [জন](https://thesquareplanet.com/) এবং [জোসে](http://josejg.com/)<br>
-**প্রশ্ন**: আমাদের ইমেল করুন [Missing-semester@mit.edu](mailto:Missing-semester@mit.edu)
+**প্রশ্ন**: আমাদের ইমেল করুন [missing-semester@mit.edu](mailto:missing-semester@mit.edu)
 
 # এমআইটির বাইরে
 
-আমরা এই ক্লাসটি এম. আই. টি-র বাইরেও ভাগ করে নিয়েছি এই আশায় যে অন্যরা এই সংস্থানগুলি থেকে উপকৃত হতে পারে। আপনি পোস্ট এবং আলোচনা খুঁজে পেতে পারেন
+আমরা এই ক্লাসটি MIT-র বাইরেও ভাগ করে নিয়েছি এই আশায় যে অন্যরা এই সংস্থানগুলি থেকে উপকৃত হতে পারে। আপনি পোস্ট এবং আলোচনা খুঁজে পেতে পারেন
 
  - [Hacker News](https://news.ycombinator.com/item?id=22226380)
  - [Lobsters](https://lobste.rs/s/ti1k98/missing_semester_your_cs_education_mit)
@@ -94,12 +94,14 @@ Some more URLs:
 
 #স্বীকৃতি
 
-আমরা ইলেইন মেলো, জিম কেইন, এবং [এমআইটি ওপেন লার্নিং](https://openlearning.mit.edu/) আমাদের জন্য বক্তৃতা ভিডিও রেকর্ড করা সম্ভব করার জন্য ধন্যবাদ; অ্যান্টনি Zolnik এবং [এমআইটি AeroAstro](https://aeroastro.mit.edu/) এ/ভি সরঞ্জামের জন্য; এবং ব্র্যান্ডি অ্যাডামস এবং [এমআইটি EECS](https://www.eecs.mit.edu/) এই ক্লাস সমর্থন করার জন্য।
+আমরা ইলেইন মেলো, জিম কেইন, এবং [MIT Open
+Learning](https://openlearning.mit.edu/) আমাদের জন্য বক্তৃতা ভিডিও রেকর্ড করা সম্ভব করার জন্য ধন্যবাদ; অ্যান্টনি Zolnik এবং [MIT
+AeroAstro](https://aeroastro.mit.edu/) এ/ভি সরঞ্জামের জন্য; এবং ব্র্যান্ডি অ্যাডামস এবং [MIT EECS](https://www.eecs.mit.edu/) এই ক্লাস সমর্থন করার জন্য।
 
 ---
 
 <div class="small center">
-<p><a href="https://github.com/missing-semester/missing-semester">Source code</a>.</p>
-<p>Licensed under CC BY-NC-SA.</p>
-<p>See <a href="/license/">here</a> for contribution &amp; translation guidelines.</p>
+<p><a href="https://github.com/missing-semester/missing-semester">সোর্স কোড</a>.</p>
+<p>CC BY-NC-SA এর অধীনে লাইসেন্সকৃত।</p>
+<p>অবদান এবং অনুবাদ নির্দেশিকাগুলির জন্য <a href="/license/">এখানে</a> দেখুন।</p>
 </div>
