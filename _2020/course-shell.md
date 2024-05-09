@@ -8,9 +8,7 @@ video:
   id: Z56Jmr9Z34Q
 ---
 
-# Motivation
-
-# Motivation
+# মোটিভেশন
 
 Computer scientist হিসেবে আমরা জানি যে কম্পিউটার খুবই দক্ষ repetitive
 কাজে সাহায্য করতে।  কিন্তু অনেক সময় আমরা ভুলে যাই যে ইটা যতটা আমাদের computer
@@ -32,70 +30,65 @@ _ব্যাবহারের_ জন্য প্রযোজ্য ততট
 
 # Class structure
 
-The class consists of 11 1-hour lectures, each one centering on a
-[particular topic](/2020/). The lectures are largely independent,
-though as the semester goes on we will presume that you are familiar
-with the content from the earlier lectures. We have lecture notes
-online, but there will be a lot of content covered in class (e.g. in the
-form of demos) that may not be in the notes. We will be recording
-lectures and posting the recordings online.
+এই ক্লাস এর মধ্যে ১১ তা  ১-ঘন্টার  lecture রয়েছে , প্রত্যেকটি একটি নির্দিষ্ট [বিষয়ের উপর](/2020/।  
+lecture গুলো স্বাধীন,
+যদিও সেমিস্টার চলাকালীন আমরা ধরে নেব যে আপনি 
+আগের লেকচারের বিষয়বস্তু সম্বন্দে পরিচিত। আমাদের লেকচার নোট আছে
+অনলাইনে, কিন্তু ক্লাসে অনেক কন্টেন্ট কভার করা হবে (ডেমো হিসেবে ) যা নোটে নাও থাকতে পারে। আমরা lecture  রেকর্ডিং করবো  এবং অনলাইনে রেকর্ডিং পোস্ট করা হবে।
 
-We are trying to cover a lot of ground over the course of just 11 1-hour
-lectures, so the lectures are fairly dense. To allow you some time to
-get familiar with the content at your own pace, each lecture includes a
-set of exercises that guide you through the lecture's key points. After
-each lecture, we are hosting office hours where we will be present to
-help answer any questions you might have. If you are attending the class
-online, you can send us questions at
-[missing-semester@mit.edu](mailto:missing-semester@mit.edu).
+আমরা মাত্র 11 1-ঘন্টা জুড়ে অনেক কিছু কভার করার চেষ্টা করছি, তাই বক্তৃতা মোটামুটি ঘন হয়. আপনাকে কিছু সময় দেওয়ার জন্য
+আপনার নিজস্ব গতিতে বিষয়বস্তুর সাথে পরিচিত হন, প্রতিটি বক্তৃতায় একটি অন্তর্ভুক্ত থাকে
+ব্যায়ামের সেট যা আপনাকে বক্তৃতার মূল পয়েন্টগুলির মাধ্যমে গাইড করে। পরে
+প্রতিটি বক্তৃতা, আমরা অফিসের সময় হোস্ট করছি যেখানে আমরা উপস্থিত থাকব
+আপনার যে কোনো প্রশ্নের উত্তর দিতে সাহায্য করুন। আপনি যদি ক্লাসে উপস্থিত হন
+অনলাইন, আপনি আমাদের প্রশ্ন পাঠাতে পারেন
+[missing-semester@mit.edu](mailto:missing-semester@mit.edu)।
 
-Due to the limited time we have, we won't be able to cover all the tools
-in the same level of detail a full-scale class might. Where possible, we
-will try to point you towards resources for digging further into a tool
-or topic, but if something particularly strikes your fancy, don't
-hesitate to reach out to us and ask for pointers!
+কম সময় থাকার জন্য আমরা সমস্ত টুলস গুলো সমান ডিটেলস এ কভার করতে পারবো না যেটা 
+একটা full-স্কেল ক্লাস করতে পারবে।  যেখানে সম্ভব আমরা তোমাকে আরো রিসোর্স দেওয়ার চেষ্টা
+করবো কোনো একটা টুলস বা টপিক কে আরো ভালো করে জানতে, কিন্তু যদি কিছু বিশেষভাবে আপনার অভিনব আঘাত করে, আমাদের কাছে পৌঁছাতে এবং পয়েন্টার চাইতে দ্বিধা নেই! 
 
 # Topic 1: The Shell
 
-## What is the shell?
+## shell  কি জিনিস?
 
-Computers these days have a variety of interfaces for giving them
-commands; fanciful graphical user interfaces, voice interfaces, and
-even AR/VR are everywhere. These are great for 80% of use-cases, but
-they are often fundamentally restricted in what they allow you to do —
-you cannot press a button that isn't there or give a voice command that
-hasn't been programmed. To take full advantage of the tools your
-computer provides, we have to go old-school and drop down to a textual
-interface: The Shell.
+কম্পিউটার আজকাল তাদের দেওয়ার জন্য বিভিন্ন ইন্টারফেস রয়েছে
+আদেশ; কল্পনাপ্রসূত গ্রাফিকাল ইউজার ইন্টারফেস, ভয়েস ইন্টারফেস এবং
+এমনকি AR/VR সব জায়গায় আছে। এগুলি 80% ব্যবহারের ক্ষেত্রে দুর্দান্ত, তবে
+তারা আপনাকে যা করতে দেয় তাতে তারা প্রায়শই মৌলিকভাবে সীমাবদ্ধ থাকে —
+আপনি সেখানে নেই এমন একটি বোতাম টিপতে পারবেন না বা ভয়েস কমান্ড দিতে পারবেন না
+প্রোগ্রাম করা হয় নি। টুলস আপনার সম্পূর্ণ সুবিধা নিতে
+কম্পিউটার প্রদান করে, আমাদের পুরানো স্কুলে যেতে হবে এবং পাঠ্যতে নেমে যেতে হবে
+ইন্টারফেস: শেল।
 
-Nearly all platforms you can get your hands on have a shell in one form or
-another, and many of them have several shells for you to choose from.
-While they may vary in the details, at their core they are all roughly
-the same: they allow you to run programs, give them input, and inspect
-their output in a semi-structured way.
+প্রায় সব প্ল্যাটফর্মে আপনি আপনার হাত পেতে পারেন একটি শেল একটি ফর্ম বা
+আরেকটি, এবং তাদের অনেকের কাছে আপনার থেকে বেছে নেওয়ার জন্য বেশ কয়েকটি শেল রয়েছে।
+যদিও সেগুলি বিশদ বিবরণে পরিবর্তিত হতে পারে, তবে তাদের মূলে সেগুলি মোটামুটি
+একই: তারা আপনাকে প্রোগ্রাম চালানোর অনুমতি দেয়, তাদের ইনপুট দেয় এবং পরিদর্শন করে
+একটি আধা-গঠিত উপায়ে তাদের আউটপুট।
 
-In this lecture, we will focus on the Bourne Again SHell, or "bash" for
-short. This is one of the most widely used shells, and its syntax is
-similar to what you will see in many other shells. To open a shell
-_prompt_ (where you can type commands), you first need a _terminal_.
-Your device probably shipped with one installed, or you can install one
-fairly easily.
+এই বক্তৃতায়, আমরা Bourne Again SHell বা "bash" এর উপর আলোকপাত করব
+সংক্ষিপ্ত এটি সবচেয়ে ব্যাপকভাবে ব্যবহৃত শেলগুলির মধ্যে একটি এবং এর সিনট্যাক্স হল
+আপনি অন্যান্য অনেক শেল দেখতে পাবেন কি অনুরূপ. একটি শেল খুলতে
+_prompt_ (যেখানে আপনি কমান্ড টাইপ করতে পারেন), আপনার প্রথমে একটি _terminal_ প্রয়োজন।
+আপনার ডিভাইস সম্ভবত একটি ইনস্টল সহ পাঠানো হয়েছে, অথবা আপনি একটি ইনস্টল করতে পারেন
+মোটামুটি সহজে।
 
-## Using the shell
+## শেল ব্যবহার করা
 
-When you launch your terminal, you will see a _prompt_ that often looks
-a little like this:
+যখন আপনি আপনার টার্মিনাল চালু করেন, আপনি একটি _prompt_ দেখতে পাবেন যা প্রায়শই দেখায়
+এই মত একটু:
 
 ```console
 missing:~$ 
 ```
 
-This is the main textual interface to the shell. It tells you that you
-are on the machine `missing` and that your "current working directory",
-or where you currently are, is `~` (short for "home"). The `$` tells you
-that you are not the root user (more on that later). At this prompt you
-can type a _command_, which will then be interpreted by the shell. The
-most basic command is to execute a program:
+এটি শেলের প্রধান পাঠ্য ইন্টারফেস। এটা আপনাকে বলে যে আপনি
+মেশিনে আছে `missing` এবং আপনার "current working directory",
+অথবা আপনি বর্তমানে যেখানে আছেন, তা হল `~` ("home" এর জন্য সংক্ষিপ্ত)। `$` আপনাকে বলে
+যে আপনি root ব্যবহারকারী নন (পরে আরও বেশি)। এই প্রম্পট আপনি
+একটি _command_ টাইপ করতে পারে, যা শেল দ্বারা ব্যাখ্যা করা হবে। দ্য
+সবচেয়ে মৌলিক কমান্ড হল একটি প্রোগ্রাম চালানো:
 
 ```console
 missing:~$ date
@@ -103,35 +96,34 @@ Fri 10 Jan 2020 11:49:31 AM EST
 missing:~$ 
 ```
 
-Here, we executed the `date` program, which (perhaps unsurprisingly)
-prints the current date and time. The shell then asks us for another
-command to execute. We can also execute a command with _arguments_:
+এখানে, আমরা 'date' প্রোগ্রামটি কার্যকর করেছি, যা (সম্ভবত আশ্চর্যজনকভাবে)
+বর্তমান তারিখ এবং সময় প্রিন্ট করে। শেলটি তখন আমাদের কাছে অন্যটির জন্য জিজ্ঞাসা করে
+কার্যকর করার আদেশ। আমরা _arguments_ দিয়ে একটি কমান্ডও চালাতে পারি:
 
 ```console
 missing:~$ echo hello
 hello
 ```
 
-In this case, we told the shell to execute the program `echo` with the
-argument `hello`. The `echo` program simply prints out its arguments.
-The shell parses the command by splitting it by whitespace, and then
-runs the program indicated by the first word, supplying each subsequent
-word as an argument that the program can access. If you want to provide
-an argument that contains spaces or other special characters (e.g., a
-directory named "My Photos"), you can either quote the argument with `'`
-or `"` (`"My Photos"`), or escape just the relevant characters with `\`
-(`My\ Photos`).
+এই ক্ষেত্রে, আমরা শেলকে বলেছিলাম প্রোগ্রামটি  'echo' এর সাথে চালাতে
+যুক্তি `hello`। 'echo' প্রোগ্রামটি কেবল তার আর্গুমেন্টগুলি প্রিন্ট করে।
+শেল হোয়াইটস্পেস দ্বারা বিভক্ত করে কমান্ডটি পার্স করে এবং তারপরে
+প্রথম শব্দ দ্বারা নির্দেশিত প্রোগ্রাম চালায়, প্রতিটি পরবর্তী সরবরাহ করে
+একটি যুক্তি হিসাবে শব্দ যে প্রোগ্রাম অ্যাক্সেস করতে পারে. দিতে চাইলে দিতে পারেন
+একটি আর্গুমেন্ট যাতে স্পেস বা অন্যান্য বিশেষ অক্ষর থাকে (যেমন, ক
+"My Photos" নামের ডিরেক্টরি), আপনি হয় `'` দিয়ে আর্গুমেন্ট উদ্ধৃত করতে পারেন
+বা `"` (`"My Photos"`), অথবা `\` দিয়ে শুধু প্রাসঙ্গিক অক্ষরগুলি এড়িয়ে যান
+('My\ Photos')।
 
-But how does the shell know how to find the `date` or `echo` programs?
-Well, the shell is a programming environment, just like Python or Ruby,
-and so it has variables, conditionals, loops, and functions (next
-lecture!). When you run commands in your shell, you are really writing a
-small bit of code that your shell interprets. If the shell is asked to
-execute a command that doesn't match one of its programming keywords, it
-consults an _environment variable_ called `$PATH` that lists which
-directories the shell should search for programs when it is given a
-command:
-
+কিন্তু কিভাবে শেল জানে কিভাবে `date` বা `echo` প্রোগ্রাম খুঁজে বের করতে হয়?
+ঠিক আছে, শেল হল একটি প্রোগ্রামিং পরিবেশ, যেমন পাইথন বা রুবি,
+এবং তাই এটির ভেরিয়েবল, কন্ডিশনাল, লুপ এবং ফাংশন রয়েছে (পরবর্তী
+বক্তৃতা!) আপনি যখন আপনার শেলে কমান্ড চালান, আপনি সত্যিই একটি লিখছেন
+কোডের একটি ছোট বিট যা আপনার শেল ব্যাখ্যা করে। যদি শেল বলা হয়
+একটি কমান্ড চালান যা তার প্রোগ্রামিং কীওয়ার্ডগুলির একটির সাথে মেলে না, এটি
+একটি _environment variable_ এর সাথে পরামর্শ করে যাকে তালিকা দেয় `$PATH`
+ডিরেক্টরীতে শেলকে প্রোগ্রাম অনুসন্ধান করা উচিত যখন এটি একটি দেওয়া হয়
+আদেশ:
 
 ```console
 missing:~$ echo $PATH
@@ -142,26 +134,26 @@ missing:~$ /bin/echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ```
 
-When we run the `echo` command, the shell sees that it should execute
-the program `echo`, and then searches through the `:`-separated list of
-directories in `$PATH` for a file by that name. When it finds it, it
-runs it (assuming the file is _executable_; more on that later). We can
-find out which file is executed for a given program name using the
-`which` program. We can also bypass `$PATH` entirely by giving the
-_path_ to the file we want to execute.
+যখন আমরা `echo` কমান্ড চালাই, শেল দেখতে পায় যে এটি কার্যকর করা উচিত
+প্রোগ্রাম `echo`, এবং তারপর `:`-এর পৃথক তালিকার মাধ্যমে অনুসন্ধান করে
+সেই নামের একটি ফাইলের জন্য `$PATH`-এ ডিরেক্টরি। যখন এটি এটি খুঁজে পায়, এটি
+এটি চালায় (অনুমান করা হচ্ছে ফাইলটি _executable_; পরে আরও বেশি)। আমরা পারি
+ব্যবহার করে একটি প্রদত্ত প্রোগ্রাম নামের জন্য কোন ফাইলটি নির্বাহ করা হয় তা খুঁজে বের করুন
+`which` প্রোগ্রাম। আমরা প্রদানের মাধ্যমে `$PATH` সম্পূর্ণভাবে বাইপাস করতে পারি
+_path_ ফাইলটিতে আমরা চালাতে চাই।
 
-## Navigating in the shell
+## শেলে নেভিগেট করা
 
-A path on the shell is a delimited list of directories; separated by `/`
-on Linux and macOS and `\` on Windows. On Linux and macOS, the path `/`
-is the "root" of the file system, under which all directories and files
-lie, whereas on Windows there is one root for each disk partition (e.g.,
-`C:\`). We will generally assume that you are using a Linux filesystem
-in this class. A path that starts with `/` is called an _absolute_ path.
-Any other path is a _relative_ path. Relative paths are relative to the
-current working directory, which we can see with the `pwd` command and
-change with the `cd` command. In a path, `.` refers to the current
-directory, and `..` to its parent directory:
+শেলের একটি পথ হল ডিরেক্টরিগুলির একটি সীমাবদ্ধ তালিকা; `/` দ্বারা বিভক্ত
+Linux এবং macOS এ এবং `\` উইন্ডোজে। Linux এবং macOS-এ, পাথ `/`
+এটি ফাইল সিস্টেমের "রুট", যার অধীনে সমস্ত ডিরেক্টরি এবং ফাইল
+মিথ্যা, যেখানে উইন্ডোজে প্রতিটি ডিস্ক পার্টিশনের জন্য একটি রুট রয়েছে (যেমন,
+`C:\`)। আমরা সাধারণত ধরে নেব যে আপনি একটি লিনাক্স ফাইল সিস্টেম ব্যবহার করছেন
+এই ক্লাসে যে পথটি `/` দিয়ে শুরু হয় তাকে বলা হয় _পরম_পথ।
+অন্য কোন পথ একটি _আত্মীয়_পথ। আপেক্ষিক পাথ আপেক্ষিক
+বর্তমান কাজের ডিরেক্টরি, যা আমরা `pwd` কমান্ড দিয়ে দেখতে পারি এবং
+'cd' কমান্ড দিয়ে পরিবর্তন করুন। একটি পথে, `.` কারেন্টকে বোঝায়
+ডিরেক্টরি, এবং `..` এর মূল ডিরেক্টরিতে:
 
 ```console
 missing:~$ pwd
@@ -182,15 +174,15 @@ missing:~$ ../../bin/echo hello
 hello
 ```
 
-Notice that our shell prompt kept us informed about what our current
-working directory was. You can configure your prompt to show you all
-sorts of useful information, which we will cover in a later lecture.
+লক্ষ্য করুন যে আমাদের শেল প্রম্পট আমাদের বর্তমান কী সম্পর্কে আমাদের অবহিত করেছে
+কাজের ডিরেক্টরি ছিল। আপনি সব দেখানোর জন্য আপনার প্রম্পট কনফিগার করতে পারেন
+বিভিন্ন ধরণের দরকারী তথ্য, যা আমরা পরবর্তী বক্তৃতায় কভার করব।
 
-In general, when we run a program, it will operate in the current
-directory unless we tell it otherwise. For example, it will usually
-search for files there, and create new files there if it needs to.
+সাধারণভাবে, যখন আমরা একটি প্রোগ্রাম চালাই, তখন এটি কারেন্টে কাজ করবে
+ডিরেক্টরি যদি না আমরা অন্যথায় বলি। উদাহরণস্বরূপ, এটি সাধারণত হবে
+সেখানে ফাইল অনুসন্ধান করুন, এবং প্রয়োজন হলে সেখানে নতুন ফাইল তৈরি করুন।
 
-To see what lives in a given directory, we use the `ls` command:
+একটি প্রদত্ত ডিরেক্টরিতে কী থাকে তা দেখতে, আমরা `ls` কমান্ড ব্যবহার করি:
 
 ```console
 missing:~$ ls
@@ -207,12 +199,12 @@ home
 ...
 ```
 
-Unless a directory is given as its first argument, `ls` will print the
-contents of the current directory. Most commands accept flags and
-options (flags with values) that start with `-` to modify their
-behavior. Usually, running a program with the `-h` or `--help` flag
-will print some help text that tells you what flags
-and options are available. For example, `ls --help` tells us:
+একটি ডিরেক্টরিকে তার প্রথম যুক্তি হিসাবে দেওয়া না হলে, `ls` মুদ্রণ করবে
+বর্তমান ডিরেক্টরির বিষয়বস্তু। বেশিরভাগ কমান্ড পতাকা গ্রহণ করে এবং
+বিকল্পগুলি (মান সহ পতাকা) যেগুলি পরিবর্তন করতে `-` দিয়ে শুরু হয়
+আচরণ সাধারণত, `-h` বা `--help` পতাকা সহ একটি প্রোগ্রাম চালানো
+কিছু হেল্প টেক্সট প্রিন্ট করবে যা আপনাকে বলে যে কোন পতাকা
+এবং বিকল্প উপলব্ধ। উদাহরণস্বরূপ, `ls --help` আমাদের বলে:
 
 ```
   -l                         use a long listing format
@@ -223,29 +215,30 @@ missing:~$ ls -l /home
 drwxr-xr-x 1 missing  users  4096 Jun 15  2019 missing
 ```
 
-This gives us a bunch more information about each file or directory
-present. First, the `d` at the beginning of the line tells us that
-`missing` is a directory. Then follow three groups of three characters
-(`rwx`). These indicate what permissions the owner of the file
-(`missing`), the owning group (`users`), and everyone else respectively
-have on the relevant item. A `-` indicates that the given principal does
-not have the given permission. Above, only the owner is allowed to
-modify (`w`) the `missing` directory (i.e., add/remove files in it). To
-enter a directory, a user must have "search" (represented by "execute":
-`x`) permissions on that directory (and its parents). To list its
-contents, a user must have read (`r`) permissions on that directory. For
-files, the permissions are as you would expect. Notice that nearly all
-the files in `/bin` have the `x` permission set for the last group,
-"everyone else", so that anyone can execute those programs.
+এটি আমাদের প্রতিটি ফাইল বা ডিরেক্টরি সম্পর্কে আরও তথ্য দেয়
+বর্তমান প্রথমত, লাইনের শুরুতে 'd' আমাদেরকে বলে
+`missing` একটি ডিরেক্টরি। তারপর তিনটি অক্ষরের তিনটি গ্রুপ অনুসরণ করুন
+(`rwx`)। এই ফাইলের মালিক কি অনুমতি নির্দেশ করে
+(`missing'), মালিকানার গোষ্ঠী (`user), এবং যথাক্রমে অন্য সবাই
+প্রাসঙ্গিক আইটেম আছে. A `-` নির্দেশ করে যে প্রদত্ত প্রধান তা করে
+প্রদত্ত অনুমতি নেই। উপরে, শুধুমাত্র মালিক অনুমোদিত
+`missing` ডিরেক্টরিটি পরিবর্তন (`w`) করুন (অর্থাৎ, এতে ফাইল যোগ করুন/সরান)। প্রতি
+একটি ডিরেক্টরি লিখুন, একজন ব্যবহারকারীর অবশ্যই "অনুসন্ধান" থাকতে হবে ("চালনা" দ্বারা উপস্থাপিত:
+সেই ডিরেক্টরিতে `x`) অনুমতি (এবং এর পিতামাতা)। তার তালিকা
+বিষয়বস্তু, একজন ব্যবহারকারীর অবশ্যই সেই ডিরেক্টরিতে পড়ার (`r`) অনুমতি থাকতে হবে। জন্য
+ফাইল, অনুমতি আপনি আশা করা হয় হিসাবে হয়. লক্ষ্য করুন যে প্রায় সব
+`/bin` এর ফাইলে শেষ গ্রুপের জন্য `x` অনুমতি সেট করা আছে,
+"অন্য সবাই", যাতে যে কেউ সেই প্রোগ্রামগুলি চালাতে পারে।
 
-Some other handy programs to know about at this point are `mv` (to
-rename/move a file), `cp` (to copy a file), and `mkdir` (to make a new
-directory).
 
-If you ever want _more_ information about a program's arguments, inputs,
-outputs, or how it works in general, give the `man` program a try. It
-takes as an argument the name of a program, and shows you its _manual
-page_. Press `q` to exit.
+এই মুহুর্তে জানার জন্য আরও কিছু সহজ প্রোগ্রাম হল `mv` ( থেকে
+একটি ফাইলের নাম পরিবর্তন/সরান), `cp` (একটি ফাইল অনুলিপি করতে), এবং `mkdir` (একটি নতুন করতে
+ডিরেক্টরি)।
+
+আপনি যদি কখনও একটি প্রোগ্রামের আর্গুমেন্ট, ইনপুট সম্পর্কে _আরো_ তথ্য চান,
+আউটপুট, বা এটি সাধারণভাবে কীভাবে কাজ করে, `ম্যান` প্রোগ্রামটি চেষ্টা করে দেখুন। এটা
+একটি যুক্তি হিসাবে একটি প্রোগ্রামের নাম নেয়, এবং আপনাকে এর _ম্যানুয়াল দেখায়
+পৃষ্ঠা_ প্রস্থান করতে `q` টিপুন।
 
 ```console
 missing:~$ man ls

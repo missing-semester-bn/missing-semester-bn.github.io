@@ -1,28 +1,23 @@
 ---
 layout: page
-title: The Missing Semester of Your CS Education
+title: আপনার CS education এর missing  semester।   
 nositetitle: true
 ---
 
-Classes teach you all about advanced topics within CS, from operating systems
-to machine learning, but there’s one critical subject that’s rarely covered,
-and is instead left to students to figure out on their own: proficiency with
-their tools. We’ll teach you how to master the command-line, use a powerful
-text editor, use fancy features of version control systems, and much more!
+Classes  আপনাকে CS  এর advanced  topic  এর সব কিছু শেখায়, operating systems থেকে শুরু করে machine learning  পর্যন্ত কিন্তু একটা খুব গুরুত্বওপূর্ণ subject  আছে যেটা খুব এ কম পোড়ানো হয় এবং ইটা student  দেড় উপর ছেড়ে দেওয়া হয় শেখার জন্য: tools  কিভাবে দক্ষতার সাথে use  করা হয়। আমরা আপনা কে শেখাবো কিভাবে command-line  এ পারদর্শী হইয়া যাই, কিভাবে একটা powerful  text-editor  use  করতে হয় , কিভাবে version  control  system  এর সুন্দর features  গুলো use  করতে হয় এবং আরো কিছু।
 
-Students spend hundreds of hours using these tools over the course of their
-education (and thousands over their career), so it makes sense to make the
-experience as fluid and frictionless as possible. Mastering these tools not
-only enables you to spend less time on figuring out how to bend your tools to
-your will, but it also lets you solve problems that would previously seem
-impossibly complex.
+ছাত্ররা ১০০র মতো ঘন্টা এই টুলস গুলো use  করে তাদের শিক্ষার সময় (আর হাজার এর মতো তাদের career  এ)। 
+সুতরাং এটার মধ্যে sense  আছে যে এই অভিজ্ঞতা কে আমাদের 
+ fluid  আর frictionless  করে উচিত যতটা সম্ভব।
+এই tools  গুলি তে দক্ষ হলে আপনি কম সময় লাগাবেন ভেবে উঠতে যে কিভাবে আপনি আপনার ইচ্ছা মতো এই টুলস গুলো কে ব্যবহার করবেন, আর ইটা আপনাকে problem  solve  করতে সাহায্য করতে যে গুলো মনে হতো খুব কঠিন।  
 
-Read about the [motivation behind this class](/about/).
+
+পড়ুন [class  এর পিছনের motivation](/about/).
 
 {% comment %}
 # Registration
 
-Sign up for the IAP 2020 class by filling out this [registration form](https://forms.gle/TD1KnwCSV52qexVt9).
+Sign up করুন  IAP 2020 class  এর জন্য  এই [registration form](https://forms.gle/TD1KnwCSV52qexVt9) form  fill-up  করে।  
 {% endcomment %}
 
 # Schedule
@@ -48,18 +43,16 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
 {% endfor %}
 </ul>
 
-Video recordings of the lectures are available [on
-YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J).
+Video recordings  [YouTube  এ ](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J) available আছে। 
 
 # About the class
 
-**Staff**: This class is co-taught by [Anish](https://www.anishathalye.com/), [Jon](https://thesquareplanet.com/), and [Jose](http://josejg.com/).<br>
-**Questions**: Email us at [missing-semester@mit.edu](mailto:missing-semester@mit.edu).
+**Staff**: এই class  পোড়ানো হয়  [Anish](https://www.anishathalye.com/), [Jon](https://thesquareplanet.com/), and [Jose](http://josejg.com/). দ্বারা <br>
+**Questions**: Email করুন  [missing-semester@mit.edu](mailto:missing-semester@mit.edu).
 
 # Beyond MIT
 
-We've also shared this class beyond MIT in the hopes that others may
-benefit from these resources. You can find posts and discussion on
+আমরা এই class  MIT  এর বাইরে share  করেছি এই আসা তে যে বাকিরা এই resource  থেকে সুবিধা পাবে।  post  এবং discussion  আপনি এখানে খুঁজে পাবেন 
 
  - [Hacker News](https://news.ycombinator.com/item?id=22226380)
  - [Lobsters](https://lobste.rs/s/ti1k98/missing_semester_your_cs_education_mit)
@@ -97,13 +90,12 @@ Some more URLs:
 - [Italian](https://missing-semester-it.github.io/)
 - [Persian](https://missing-semester-fa.github.io/)
 - [German](https://missing-semester-de.github.io/)
+- [Bengali](https://missing-semester-bn.github.io/)
 
-Note: these are external links to community translations. We have not vetted
-them.
+Note: এগুলো হচ্ছে community  translations  এর external  links । আমরা এগুলো যাচাই করে দেখিনি। 
 
-Have you created a translation of the course notes from this class? Submit a
-[pull request](https://github.com/missing-semester/missing-semester/pulls) so
-we can add it to the list!
+আপনি কি এই class  এর course  notes  এর translation  বানিয়েছেন? একটা 
+[pull request](https://github.com/missing-semester/missing-semester/pulls) submit  করুন যাতে আমরা ওটাকে list  এ অ্যাড করতে পারি।  
 
 ## Acknowledgements
 
