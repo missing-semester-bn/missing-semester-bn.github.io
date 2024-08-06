@@ -1,6 +1,6 @@
 ---
 layout: lecture
-title: "Command-line Environment"
+title: "কমান্ড-লাইন Environment"
 date: 2020-01-21
 ready: true
 video:
@@ -8,24 +8,37 @@ video:
   id: e8BO_dYxk5c
 ---
 
-In this lecture we will go through several ways in which you can improve your workflow when using the shell. We have been working with the shell for a while now, but we have mainly focused on executing different commands. We will now see how to run several processes at the same time while keeping track of them, how to stop or pause a specific process and how to make a process run in the background.
+এই বক্তৃতায় আমরা বেশ কয়েকটি উপায়ের মধ্য দিয়ে যাব যাতে শেল ব্যবহার করার সময় আপনি
+আপনার কর্মপ্রবাহ উন্নত করতে পারেন। আমরা কিছু সময়ের জন্য শেল নিয়ে কাজ করছি, তবে আমরা 
+মূলত বিভিন্ন কমান্ড কার্যকর করার দিকে মনোনিবেশ করেছি। এখন আমরা দেখব কিভাবে একই সময়ে 
+বিভিন্ন প্রসেস চালানো যায় তাদের উপর নজর রাখার সময়, কিভাবে একটি নির্দিষ্ট প্রসেসকে 
+থামানো বা থামানো যায় এবং কিভাবে একটি প্রসেসকে ব্যাকগ্রাউন্ডে চালানো যায়।
 
-We will also learn about different ways to improve your shell and other tools, by defining aliases and configuring them using dotfiles. Both of these can help you save time, e.g. by using the same configurations in all your machines without having to type long commands. We will look at how to work with remote machines using SSH.
+
+আমরা আপনার শেল এবং অন্যান্য সরঞ্জামগুলিকে উন্নত করার বিভিন্ন উপায় সম্পর্কেও শিখব, 
+ডাকনামগুলি সংজ্ঞায়িত করে এবং ডটফাইল ব্যবহার করে সেগুলি কনফিগার করে। এই উভয়ই আপনাকে 
+সময় বাঁচাতে সাহায্য করতে পারে, e.g। দীর্ঘ কমান্ড টাইপ না করে আপনার সমস্ত মেশিনে একই 
+কনফিগারেশন ব্যবহার করে। এসএসএইচ ব্যবহার করে দূরবর্তী মেশিনে কীভাবে কাজ করা যায় তা আমরা 
+দেখব।
+
+
 
 
 # Job Control
 
-In some cases you will need to interrupt a job while it is executing, for instance if a command is taking too long to complete (such as a `find` with a very large directory structure to search through).
-Most of the time, you can do `Ctrl-C` and the command will stop.
-But how does this actually work and why does it sometimes fail to stop the process?
+কিছু ক্ষেত্রে কাজটি সম্পাদন করার সময় আপনাকে বাধা দিতে হবে, উদাহরণস্বরূপ যদি কোনও কমান্ড 
+সম্পূর্ণ হতে খুব বেশি সময় নেয় (যেমন অনুসন্ধানের জন্য একটি খুব বড় ডিরেক্টরি কাঠামো সহ 
+একটি 'সন্ধান')
+বেশিরভাগ সময়, আপনি 'Ctrl-C' করতে পারেন এবং কমান্ডটি বন্ধ হয়ে যাবে।
+কিন্তু এটি আসলে কীভাবে কাজ করে এবং কেন এটি কখনও কখনও প্রক্রিয়াটি বন্ধ করতে ব্যর্থ হয়?
 
 ## Killing a process
 
-Your shell is using a UNIX communication mechanism called a _signal_ to communicate information to the process. When a process receives a signal it stops its execution, deals with the signal and potentially changes the flow of execution based on the information that the signal delivered. For this reason, signals are _software interrupts_.
+আপনার শেল প্রক্রিয়াটিতে তথ্য যোগাযোগের জন্য _signal_ নামক একটি ইউনিক্স যোগাযোগ ব্যবস্থা ব্যবহার করছে। যখন কোনও প্রক্রিয়া একটি সংকেত পায় তখন এটি তার কার্যকরকরণ বন্ধ করে দেয়, সংকেতের সাথে ডিল করে এবং সংকেতটি যে তথ্য সরবরাহ করে তার উপর ভিত্তি করে কার্যকরকরণের প্রবাহকে সম্ভাব্যভাবে পরিবর্তন করে। এই কারণে, সংকেতগুলি _software interrupts_।
 
-In our case, when typing `Ctrl-C` this prompts the shell to deliver a `SIGINT` signal to the process.
+আমাদের ক্ষেত্রে, 'Ctrl-C' টাইপ করার সময় এটি প্রক্রিয়াটিতে একটি 'SIGINT' সংকেত সরবরাহ করতে শেলকে প্ররোচিত করে।
 
-Here's a minimal example of a Python program that captures `SIGINT` and ignores it, no longer stopping. To kill this program we can now use the `SIGQUIT` signal instead, by typing `Ctrl-\`.
+এখানে একটি পাইথন প্রোগ্রামের একটি ন্যূনতম উদাহরণ রয়েছে যা 'SIGINT' ক্যাপচার করে এবং এটিকে উপেক্ষা করে, আর থামবে না। এই প্রোগ্রামটি নিষ্ক্রিয় করতে আমরা এখন 'Ctrl-\' টাইপ করে 'SIGQUIT' সিগন্যাল ব্যবহার করতে পারি।
 
 ```python
 #!/usr/bin/env python
@@ -42,7 +55,7 @@ while True:
     i += 1
 ```
 
-Here's what happens if we send `SIGINT` twice to this program, followed by `SIGQUIT`. Note that `^` is how `Ctrl` is displayed when typed in the terminal.
+আমরা যদি এই প্রোগ্রামে দু 'বার' SIGINT 'পাঠাই, তারপরে' SIGQUIT 'পাঠাই তবে কী হবে তা এখানে। লক্ষ্য করুন যে '^' হল টার্মিনালে টাইপ করার সময় 'Ctrl' প্রদর্শিত হয়।
 
 ```
 $ python sigint.py
@@ -53,8 +66,8 @@ I got a SIGINT, but I am not stopping
 30^\[1]    39913 quit       python sigint.py
 ```
 
-While `SIGINT` and `SIGQUIT` are both usually associated with terminal related requests, a more generic signal for asking a process to exit gracefully is the `SIGTERM` signal.
-To send this signal we can use the [`kill`](https://www.man7.org/linux/man-pages/man1/kill.1.html) command, with the syntax `kill -TERM <PID>`.
+যদিও 'SIGINT' এবং 'SIGQUIT' উভয়ই সাধারণত টার্মিনাল সম্পর্কিত অনুরোধের সাথে যুক্ত, তবে কোনও প্রক্রিয়াটিকে সুন্দরভাবে প্রস্থান করতে বলার জন্য আরও সাধারণ সংকেত হল 'SIGTERM' সংকেত।
+এই সংকেত পাঠাতে আমরা [`kill`](https://www.man7.org/linux/man-pages/man1/kill.1.html) কমান্ড ব্যবহার করতে পারি, সিনট্যাক্স 'kill -TERM <PID>' সহ।
 
 ## Pausing and backgrounding processes
 
