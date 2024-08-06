@@ -39,14 +39,14 @@ Sign up করুন  IAP 2020 class  এর জন্য  এই [registration 
 {% endfor %}
 </ul>
 
-বক্তৃতাগুলির ভিডিও রেকর্ডিং [ইউটিউবে](https://www.youtube.com/playlist?list=PlyzOVJj3bHQuloKGG59rS43e29ro7I57J) পাওয়া যায়
+বক্তৃতাগুলির ভিডিও রেকর্ডিং [ইউটিউবে](https://www.youtube.com/playlist?list=PlyzOVJj3bHQuloKGG59rS43e29ro7I57J) পাওয়া যায়।
 
-#ক্লাস সম্পর্কে
+# ক্লাস সম্পর্কে
 
 **স্টাফ**: এই ক্লাস সহ-শেখানো হয় [Anish](https://www.anishathalye.com/) [জন](https://thesquareplanet.com/) এবং [জোসে](http://josejg.com/)<br>
 **প্রশ্ন**: আমাদের ইমেল করুন [missing-semester@mit.edu](mailto:missing-semester@mit.edu)
 
-# এমআইটির বাইরে
+#  MIT-র বাইরে
 
 আমরা এই ক্লাসটি MIT-র বাইরেও ভাগ করে নিয়েছি এই আশায় যে অন্যরা এই সংস্থানগুলি থেকে উপকৃত হতে পারে। আপনি পোস্ট এবং আলোচনা খুঁজে পেতে পারেন
 
@@ -70,7 +70,7 @@ Some more URLs:
 - https://twitter.com/MIT_CSAIL/status/1581313961093484545
 {% endcomment %}
 
-# Translations
+# অনুবাদসমূহ
 
 - [Chinese (Simplified)](https://missing-semester-cn.github.io/)
 - [Chinese (Traditional)](https://missing-semester-zh-hant.github.io/)
@@ -92,7 +92,7 @@ Some more URLs:
 
 আপনি কি এই ক্লাসের কোর্স নোটগুলির একটি অনুবাদ তৈরি করেছেন? একটি [pull request](https://github.com/missing-semester/missing-semester/pulls) জমা দিন যাতে আমরা এটি তালিকায় যুক্ত করতে পারি!
 
-#স্বীকৃতি
+# স্বীকৃতি
 
 আমরা ইলেইন মেলো, জিম কেইন, এবং [MIT Open
 Learning](https://openlearning.mit.edu/) আমাদের জন্য বক্তৃতা ভিডিও রেকর্ড করা সম্ভব করার জন্য ধন্যবাদ; অ্যান্টনি Zolnik এবং [MIT

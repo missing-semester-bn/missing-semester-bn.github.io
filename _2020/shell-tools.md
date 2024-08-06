@@ -8,25 +8,25 @@ video:
   id: kgII-YWo3Zw
 ---
 
-In this lecture, we will present some of the basics of using bash as a scripting language along with a number of shell tools that cover several of the most common tasks that you will be constantly performing in the command line.
+এই বক্তৃতায়, আমরা বেশ কয়েকটি শেল সরঞ্জামের সাথে স্ক্রিপ্টিং ভাষা হিসাবে ব্যাশ ব্যবহার করার কিছু মৌলিক বিষয় উপস্থাপন করব যা আপনি কমান্ড লাইনে ক্রমাগত সম্পাদন করবেন এমন বেশ কয়েকটি সাধারণ কাজকে কভার করে।
 
-# Shell Scripting
+#শেল স্ক্রিপ্টিং
 
-So far we have seen how to execute commands in the shell and pipe them together.
-However, in many scenarios you will want to perform a series of commands and make use of control flow expressions like conditionals or loops.
+এখন পর্যন্ত আমরা দেখেছি কিভাবে শেল এ কমান্ড এক্সিকিউট করা যায় এবং সেগুলিকে একসঙ্গে পাইপ করা যায়।
+যাইহোক, অনেক পরিস্থিতিতে আপনি একাধিক কমান্ড সম্পাদন করতে চাইবেন এবং শর্তসাপেক্ষ বা লুপগুলির মতো নিয়ন্ত্রণ প্রবাহের অভিব্যক্তিগুলি ব্যবহার করতে চাইবেন।
 
-Shell scripts are the next step in complexity.
-Most shells have their own scripting language with variables, control flow and its own syntax.
-What makes shell scripting different from other scripting programming languages is that it is optimized for performing shell-related tasks.
-Thus, creating command pipelines, saving results into files, and reading from standard input are primitives in shell scripting, which makes it easier to use than general purpose scripting languages.
-For this section we will focus on bash scripting since it is the most common.
+শেল স্ক্রিপ্টগুলি জটিলতার পরবর্তী ধাপ।
+বেশিরভাগ শেলের ভেরিয়েবল, নিয়ন্ত্রণ প্রবাহ এবং নিজস্ব বাক্য গঠন সহ তাদের নিজস্ব স্ক্রিপ্টিং ভাষা রয়েছে।
+যা শেল স্ক্রিপ্টিংকে অন্যান্য স্ক্রিপ্টিং প্রোগ্রামিং ভাষার থেকে আলাদা করে তোলে তা হল এটি শেল-সম্পর্কিত কাজগুলি সম্পাদনের জন্য অনুকূলিত।
+সুতরাং, কমান্ড পাইপলাইন তৈরি করা, ফাইলগুলিতে ফলাফল সংরক্ষণ করা এবং স্ট্যান্ডার্ড ইনপুট থেকে পড়া শেল স্ক্রিপ্টিংয়ের আদিম, যা সাধারণ উদ্দেশ্য স্ক্রিপ্টিং ভাষার তুলনায় ব্যবহার করা সহজ করে তোলে।
+এই বিভাগের জন্য আমরা ব্যাশ স্ক্রিপ্টিংয়ের দিকে মনোনিবেশ করব কারণ এটি সবচেয়ে সাধারণ।
 
-To assign variables in bash, use the syntax `foo=bar` and access the value of the variable with `$foo`.
-Note that `foo = bar` will not work since it is interpreted as calling the `foo` program with arguments `=` and `bar`.
-In general, in shell scripts the space character will perform argument splitting. This behavior can be confusing to use at first, so always check for that.
+ব্যাশে ভেরিয়েবল বরাদ্দ করতে, 'foo = bar' সিনট্যাক্স ব্যবহার করুন এবং '$foo' দিয়ে ভেরিয়েবলের মান অ্যাক্সেস করুন।
+লক্ষ্য করুন যে 'foo = bar' কাজ করবে না কারণ এটি আর্গুমেন্ট '=' এবং 'bar' সহ 'foo' প্রোগ্রামকে কল করা হিসাবে ব্যাখ্যা করা হয়।
+সাধারণভাবে, শেল স্ক্রিপ্টে স্পেস চরিত্রটি আর্গুমেন্ট বিভাজন সম্পাদন করবে। এই আচরণটি প্রথমে ব্যবহার করা বিভ্রান্তিকর হতে পারে, তাই সর্বদা এটি পরীক্ষা করুন।
 
-Strings in bash can be defined with `'` and `"` delimiters, but they are not equivalent.
-Strings delimited with `'` are literal strings and will not substitute variable values whereas `"` delimited strings will.
+ব্যাশের স্ট্রিংগুলিকে 'এবং' সীমানা দ্বারা সংজ্ঞায়িত করা যেতে পারে, তবে সেগুলি সমতুল্য নয়।
+'দিয়ে সীমাবদ্ধ স্ট্রিংগুলি আক্ষরিক স্ট্রিং এবং পরিবর্তনশীল মানগুলিকে প্রতিস্থাপন করবে না যেখানে' 'দ্বারা সীমাবদ্ধ স্ট্রিংগুলি প্রতিস্থাপন করবে।
 
 ```bash
 foo=bar
@@ -36,8 +36,8 @@ echo '$foo'
 # prints $foo
 ```
 
-As with most programming languages, bash supports control flow techniques including `if`, `case`, `while` and `for`.
-Similarly, `bash` has functions that take arguments and can operate with them. Here is an example of a function that creates a directory and `cd`s into it.
+বেশিরভাগ প্রোগ্রামিং ভাষার মতো, ব্যাশ 'যদি', 'কেস', 'যখন' এবং 'জন্য' সহ নিয়ন্ত্রণ প্রবাহ কৌশলগুলিকে সমর্থন করে।
+একইভাবে, 'ব্যাশ'-এর এমন ফাংশন রয়েছে যা আর্গুমেন্ট গ্রহণ করে এবং তাদের সাথে কাজ করতে পারে। এখানে এমন একটি ফাংশনের উদাহরণ দেওয়া হল যা একটি ডিরেক্টরি এবং 'সিডি' তৈরি করে।
 
 
 ```bash
@@ -47,24 +47,20 @@ mcd () {
 }
 ```
 
-Here `$1` is the first argument to the script/function.
-Unlike other scripting languages, bash uses a variety of special variables to refer to arguments, error codes, and other relevant variables. Below is a list of some of them. A more comprehensive list can be found [here](https://tldp.org/LDP/abs/html/special-chars.html).
-- `$0` - Name of the script
-- `$1` to `$9` - Arguments to the script. `$1` is the first argument and so on.
-- `$@` - All the arguments
-- `$#` - Number of arguments
-- `$?` - Return code of the previous command
-- `$$` - Process identification number (PID) for the current script
-- `!!` - Entire last command, including arguments. A common pattern is to execute a command only for it to fail due to missing permissions; you can quickly re-execute the command with sudo by doing `sudo !!`
-- `$_` - Last argument from the last command. If you are in an interactive shell, you can also quickly get this value by typing `Esc` followed by `.` or `Alt+.`
+এখানে '$1' হল স্ক্রিপ্ট/ফাংশনের প্রথম আর্গুমেন্ট।
+অন্যান্য স্ক্রিপ্টিং ভাষার বিপরীতে, ব্যাশ আর্গুমেন্ট, ত্রুটি কোড এবং অন্যান্য প্রাসঙ্গিক ভেরিয়েবল বোঝাতে বিভিন্ন বিশেষ ভেরিয়েবল ব্যবহার করে। নিচে তার কয়েকটি তালিকা দেওয়া হলো। আরও বিস্তৃত তালিকা পাওয়া যাবে [এখানে] (https://tldp.org/LDP/abs/html/spacial-chars.html)
+- '$0'-স্ক্রিপ্টের নাম-'$1' থেকে '$9' - স্ক্রিপ্টে যুক্তি। '$1' হল প্রথম আর্গুমেন্ট ইত্যাদি।
+- '$@'-সমস্ত যুক্তি
+- '$#'-আর্গুমেন্টের সংখ্যা-'$?' - আগের কমান্ডের রিটার্ন কোড-'$$' - বর্তমান স্ক্রিপ্টের জন্য প্রসেস আইডেন্টিফিকেশন নম্বর (পিআইডি)-'! '-আর্গুমেন্ট সহ সম্পূর্ণ শেষ কমান্ড। একটি সাধারণ প্যাটার্ন হল শুধুমাত্র অনুমতি না থাকার কারণে ব্যর্থ হওয়ার জন্য একটি কমান্ড এক্সিকিউট করা; আপনি 'sudo! '!
+- '$_'-শেষ কমান্ড থেকে শেষ যুক্তি। আপনি যদি একটি ইন্টারেক্টিভ শেলের মধ্যে থাকেন, তাহলে আপনি 'Esc' এর পরে '.' বা 'Alt +' টাইপ করে দ্রুত এই মানটি পেতে পারেন।
 
-Commands will often return output using `STDOUT`, errors through `STDERR`, and a Return Code to report errors in a more script-friendly manner.
-The return code or exit status is the way scripts/commands have to communicate how execution went.
-A value of 0 usually means everything went OK; anything different from 0 means an error occurred.
+কমান্ডগুলি প্রায়শই 'STDOUT' ব্যবহার করে আউটপুট, 'STDERR' এর মাধ্যমে ত্রুটি এবং আরও স্ক্রিপ্ট-বান্ধব পদ্ধতিতে ত্রুটিগুলি রিপোর্ট করার জন্য একটি রিটার্ন কোড প্রদান করে।
+রিটার্ন কোড বা এক্সিট স্ট্যাটাস হল স্ক্রিপ্ট/কমান্ডগুলি কীভাবে কার্যকর হয়েছিল তা যোগাযোগ করার উপায়।
+0 এর একটি মান সাধারণত বোঝায় যে সবকিছু ঠিক আছে; 0 থেকে ভিন্ন কিছু মানে একটি ত্রুটি ঘটেছে।
 
-Exit codes can be used to conditionally execute commands using `&&` (and operator) and `||` (or operator), both of which are [short-circuiting](https://en.wikipedia.org/wiki/Short-circuit_evaluation) operators. Commands can also be separated within the same line using a semicolon `;`.
-The `true` program will always have a 0 return code and the `false` command will always have a 1 return code.
-Let's see some examples
+প্রস্থান কোডগুলি শর্তসাপেক্ষভাবে '& &' (এবং অপারেটর) এবং '।।' (বা অপারেটর) ব্যবহার করে কমান্ডগুলি কার্যকর করতে ব্যবহার করা যেতে পারে যা উভয়ই [short-circuiting] (https://en.wikipedia.org/wiki/Short-circuit_evaluation) অপারেটর। কমান্ডগুলি ';' ব্যবহার করে একই লাইনের মধ্যেও পৃথক করা যেতে পারে।
+'সত্য' প্রোগ্রামে সর্বদা একটি 0 রিটার্ন কোড থাকবে এবং 'মিথ্যা' কমান্ডের সর্বদা একটি 1 রিটার্ন কোড থাকবে।
+আসুন কিছু উদাহরণ দেখি
 
 ```bash
 false || echo "Oops, fail"
@@ -86,13 +82,13 @@ false ; echo "This will always run"
 # This will always run
 ```
 
-Another common pattern is wanting to get the output of a command as a variable. This can be done with _command substitution_.
-Whenever you place `$( CMD )` it will execute `CMD`, get the output of the command and substitute it in place.
-For example, if you do `for file in $(ls)`, the shell will first call `ls` and then iterate over those values.
-A lesser known similar feature is _process substitution_, `<( CMD )` will execute `CMD` and place the output in a temporary file and substitute the `<()` with that file's name. This is useful when commands expect values to be passed by file instead of by STDIN. For example, `diff <(ls foo) <(ls bar)` will show differences between files in dirs  `foo` and `bar`.
+আরেকটি সাধারণ প্যাটার্ন হল পরিবর্তনশীল হিসাবে একটি কমান্ডের আউটপুট পেতে চাওয়া। এটি _ কমান্ড প্রতিস্থাপন _ দিয়ে করা যেতে পারে।
+যখনই আপনি '$(CMD)' রাখবেন এটি 'CMD' এক্সিকিউট করবে, কমান্ডের আউটপুট পাবেন এবং এটিকে প্রতিস্থাপন করবেন।
+উদাহরণস্বরূপ, আপনি যদি '$(ls)-এ ফাইলের জন্য' করেন, তবে শেলটি প্রথমে 'ls' কল করবে এবং তারপরে সেই মানগুলির উপর পুনরাবৃত্তি করবে।
+একটি কম পরিচিত অনুরূপ বৈশিষ্ট্য হল _ process substitute _, '<(CMD)' 'CMD' এক্সিকিউট করবে এবং আউটপুটটিকে একটি অস্থায়ী ফাইলে রাখবে এবং '<()' কে সেই ফাইলের নামের সাথে প্রতিস্থাপন করবে। এটি কার্যকর হয় যখন কমান্ডগুলি STDIN এর পরিবর্তে ফাইল দ্বারা মানগুলি পাস করার আশা করে। উদাহরণস্বরূপ, 'Diff <(ls foo) <(ls bar)' 'foo' এবং 'bar' এর ফাইলের মধ্যে পার্থক্য দেখাবে।
 
 
-Since that was a huge information dump, let's see an example that showcases some of these features. It will iterate through the arguments we provide, `grep` for the string `foobar`, and append it to the file as a comment if it's not found.
+যেহেতু এটি একটি বিশাল তথ্যের আবর্জনা ছিল, আসুন একটি উদাহরণ দেখি যা এই বৈশিষ্ট্যগুলির কয়েকটি প্রদর্শন করে। এটি আমাদের প্রদত্ত আর্গুমেন্টগুলির মাধ্যমে পুনরাবৃত্তি করবে, 'ফোবার' স্ট্রিংয়ের জন্য 'গ্রেপ', এবং যদি এটি না পাওয়া যায় তবে এটি একটি মন্তব্য হিসাবে ফাইলের সাথে যুক্ত করবে।
 
 ```bash
 #!/bin/bash
@@ -112,13 +108,13 @@ for file in "$@"; do
 done
 ```
 
-In the comparison we tested whether `$?` was not equal to 0.
-Bash implements many comparisons of this sort - you can find a detailed list in the manpage for [`test`](https://www.man7.org/linux/man-pages/man1/test.1.html).
-When performing comparisons in bash, try to use double brackets `[[ ]]` in favor of simple brackets `[ ]`. Chances of making mistakes are lower although it won't be portable to `sh`. A more detailed explanation can be found [here](http://mywiki.wooledge.org/BashFAQ/031).
+তুলনায় আমরা পরীক্ষা করেছি যে '$?' 0 এর সমান নয় কিনা।
+ব্যাশ এই ধরণের অনেক তুলনা প্রয়োগ করে-আপনি ম্যানপেজে একটি বিস্তারিত তালিকা খুঁজে পেতে পারেন ['test'] (https://www.man7.org/linux/man-pages/man1/test.1.html)
+ব্যাশে তুলনা করার সময়, সাধারণ বন্ধনী '[]'-এর পক্ষে ডাবল বন্ধনী '[]' ব্যবহার করার চেষ্টা করুন। ভুল করার সম্ভাবনা কম যদিও এটি 'শ'-এর জন্য বহনযোগ্য হবে না। আরও বিস্তারিত ব্যাখ্যা পাওয়া যাবে [এখানে] (http://mywiki.wooledge.org/BashFAQ/031)
 
-When launching scripts, you will often want to provide arguments that are similar. Bash has ways of making this easier, expanding expressions by carrying out filename expansion. These techniques are often referred to as shell _globbing_.
-- Wildcards - Whenever you want to perform some sort of wildcard matching, you can use `?` and `*` to match one or any amount of characters respectively. For instance, given files `foo`, `foo1`, `foo2`, `foo10` and `bar`, the command `rm foo?` will delete `foo1` and `foo2` whereas `rm foo*` will delete all but `bar`.
-- Curly braces `{}` - Whenever you have a common substring in a series of commands, you can use curly braces for bash to expand this automatically. This comes in very handy when moving or converting files.
+স্ক্রিপ্ট চালু করার সময়, আপনি প্রায়শই অনুরূপ আর্গুমেন্ট সরবরাহ করতে চাইবেন। ব্যাশের কাছে ফাইলের নাম সম্প্রসারণের মাধ্যমে এই অভিব্যক্তিগুলিকে সহজতর, প্রসারিত করার উপায় রয়েছে। এই কৌশলগুলিকে প্রায়শই শেল _ গ্লোবিং _ হিসাবে উল্লেখ করা হয়।
+- ওয়াইল্ডকার্ড-যখনই আপনি কোনও ধরণের ওয়াইল্ডকার্ড ম্যাচ করতে চান, আপনি যথাক্রমে একটি বা যে কোনও পরিমাণ অক্ষরের সাথে মেলাতে '?' এবং '*' ব্যবহার করতে পারেন। উদাহরণস্বরূপ, প্রদত্ত ফাইল 'foo', 'foo1', 'foo2', 'foo10' এবং 'bar', 'rm foo?' কমান্ড 'foo1' এবং 'foo2' মুছে ফেলবে যেখানে 'rm foo *' বার ছাড়া সব মুছে ফেলবে।
+- কোঁকড়া ধনুর্বন্ধনী '{}'-যখনই আপনার কমান্ডের একটি সিরিজে একটি সাধারণ সাবস্ট্রিং থাকে, আপনি এটি স্বয়ংক্রিয়ভাবে প্রসারিত করতে ব্যাশের জন্য কোঁকড়া ধনুর্বন্ধনী ব্যবহার করতে পারেন। ফাইল সরানোর বা রূপান্তর করার সময় এটি খুব কাজে আসে।
 
 ```bash
 convert image.{png,jpg}
@@ -148,9 +144,9 @@ diff <(ls foo) <(ls bar)
 
 <!-- Lastly, pipes `|` are a core feature of scripting. Pipes connect one program's output to the next program's input. We will cover them more in detail in the data wrangling lecture. -->
 
-Writing `bash` scripts can be tricky and unintuitive. There are tools like [shellcheck](https://github.com/koalaman/shellcheck) that will help you find errors in your sh/bash scripts.
+'ব্যাশ' স্ক্রিপ্ট লেখা জটিল এবং স্বজ্ঞাত হতে পারে। [shellcheck] (https://github.com/koalaman/shellcheck) এর মতো সরঞ্জাম রয়েছে যা আপনাকে আপনার sh/bash স্ক্রিপ্টগুলিতে ত্রুটিগুলি খুঁজে পেতে সহায়তা করবে।
 
-Note that scripts need not necessarily be written in bash to be called from the terminal. For instance, here's a simple Python script that outputs its arguments in reversed order:
+লক্ষ্য করুন যে, টার্মিনাল থেকে কল করার জন্য স্ক্রিপ্টগুলি ব্যাশে লেখার প্রয়োজন নেই। উদাহরণস্বরূপ, এখানে একটি সাধারণ পাইথন স্ক্রিপ্ট রয়েছে যা তার আর্গুমেন্টগুলিকে বিপরীত ক্রমে আউটপুট করেঃ
 
 ```python
 #!/usr/local/bin/python
@@ -159,40 +155,39 @@ for arg in reversed(sys.argv[1:]):
     print(arg)
 ```
 
-The kernel knows to execute this script with a python interpreter instead of a shell command because we included a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) line at the top of the script.
-It is good practice to write shebang lines using the [`env`](https://www.man7.org/linux/man-pages/man1/env.1.html) command that will resolve to wherever the command lives in the system, increasing the portability of your scripts. To resolve the location, `env` will make use of the `PATH` environment variable we introduced in the first lecture.
-For this example the shebang line would look like `#!/usr/bin/env python`.
+কার্নেল শেল কমান্ডের পরিবর্তে পাইথন ইন্টারপ্রেটার দিয়ে এই স্ক্রিপ্টটি কার্যকর করতে জানে কারণ আমরা স্ক্রিপ্টের শীর্ষে একটি [শেবাং] (https://en.wikpedia.org/wiki/Shebang_ (Unix)) লাইন অন্তর্ভুক্ত করেছি।
+['env'] (https://www.man7.org/linux/man-pages/man1/env.1.html) কমান্ড ব্যবহার করে শেবাং লাইনগুলি লেখার জন্য ভাল অনুশীলন যা আপনার স্ক্রিপ্টগুলির বহনযোগ্যতা বাড়িয়ে, কমান্ডটি সিস্টেমে যেখানেই থাকুক না কেন সমাধান করবে। অবস্থান সমাধানের জন্য, 'env' 'PATH' এনভায়রনমেন্ট ভেরিয়েবল ব্যবহার করবে যা আমরা প্রথম বক্তৃতায় চালু করেছি।
+এই উদাহরণের জন্য শেবাং লাইনটি '#!/usr/bin/env python' এর মতো দেখাবে।
 
-Some differences between shell functions and scripts that you should keep in mind are:
-- Functions have to be in the same language as the shell, while scripts can be written in any language. This is why including a shebang for scripts is important.
-- Functions are loaded once when their definition is read. Scripts are loaded every time they are executed. This makes functions slightly faster to load, but whenever you change them you will have to reload their definition.
-- Functions are executed in the current shell environment whereas scripts execute in their own process. Thus, functions can modify environment variables, e.g. change your current directory, whereas scripts can't. Scripts will be passed by value environment variables that have been exported using [`export`](https://www.man7.org/linux/man-pages/man1/export.1p.html)
-- As with any programming language, functions are a powerful construct to achieve modularity, code reuse, and clarity of shell code. Often shell scripts will include their own function definitions.
+শেল ফাংশন এবং স্ক্রিপ্টের মধ্যে কিছু পার্থক্য যা আপনার মনে রাখা উচিত তা হলঃ-ফাংশনগুলি শেলের মতো একই ভাষায় হতে হবে, যখন স্ক্রিপ্টগুলি যে কোনও ভাষায় লেখা যেতে পারে। এই কারণেই চিত্রনাট্যের জন্য একটি শেবাং অন্তর্ভুক্ত করা গুরুত্বপূর্ণ।
+- ফাংশনগুলি একবার লোড করা হয় যখন তাদের সংজ্ঞা পড়া হয়। স্ক্রিপ্টগুলি প্রতিবার কার্যকর করার সময় লোড করা হয়। এটি ফাংশনগুলিকে কিছুটা দ্রুত লোড করে তোলে, তবে যখনই আপনি সেগুলি পরিবর্তন করবেন আপনাকে তাদের সংজ্ঞাটি পুনরায় লোড করতে হবে।
+- ফাংশনগুলি বর্তমান শেল পরিবেশে কার্যকর করা হয় যেখানে স্ক্রিপ্টগুলি তাদের নিজস্ব প্রক্রিয়ায় কার্যকর হয়। সুতরাং, ফাংশনগুলি এনভায়রনমেন্ট ভ্যারিয়েবল পরিবর্তন করতে পারে, e.g। আপনার বর্তমান ডিরেক্টরি পরিবর্তন করুন, যেখানে স্ক্রিপ্টগুলি পারে না। স্ক্রিপ্টগুলি মান পরিবেশের ভেরিয়েবল দ্বারা পাস করা হবে যা ['রপ্তানি'] ব্যবহার করে রফতানি করা হয়েছে(https://www.man7.org/linux/man-pages/man1/export.1p.html)
+যে কোনও প্রোগ্রামিং ভাষার মতো, ফাংশনগুলি মডুলারিটি, কোড পুনঃব্যবহার এবং শেল কোডের স্পষ্টতা অর্জনের জন্য একটি শক্তিশালী গঠন। প্রায়শই শেল স্ক্রিপ্টগুলিতে তাদের নিজস্ব ফাংশনের সংজ্ঞা অন্তর্ভুক্ত থাকে।
 
-# Shell Tools
+#শেল টুলস
 
-## Finding how to use commands
+#কমান্ড ব্যবহার করার উপায় খুঁজে বের করা
 
-At this point, you might be wondering how to find the flags for the commands in the aliasing section such as `ls -l`, `mv -i` and `mkdir -p`.
-More generally, given a command, how do you go about finding out what it does and its different options?
-You could always start googling, but since UNIX predates StackOverflow, there are built-in ways of getting this information.
+এই মুহুর্তে, আপনি হয়তো ভাবছেন যে 'ls-l', 'mv-i' এবং 'mkdir-p' এর মতো আলিয়াসিং বিভাগে কমান্ডগুলির জন্য ফ্ল্যাগগুলি কীভাবে খুঁজে পাওয়া যায়।
+আরও সাধারণভাবে, একটি আদেশ দেওয়া হলে, এটি কী করে এবং এর বিভিন্ন বিকল্পগুলি আপনি কীভাবে খুঁজে বের করবেন?
+আপনি সর্বদা গুগলিং শুরু করতে পারেন, কিন্তু যেহেতু ইউনিক্স স্ট্যাকওভারফ্লোর পূর্ববর্তী, তাই এই তথ্য পাওয়ার জন্য অন্তর্নির্মিত উপায় রয়েছে।
 
-As we saw in the shell lecture, the first-order approach is to call said command with the `-h` or `--help` flags. A more detailed approach is to use the `man` command.
-Short for manual, [`man`](https://www.man7.org/linux/man-pages/man1/man.1.html) provides a manual page (called manpage) for a command you specify.
-For example, `man rm` will output the behavior of the `rm` command along with the flags that it takes, including the `-i` flag we showed earlier.
-In fact, what I have been linking so far for every command is the online version of the Linux manpages for the commands.
-Even non-native commands that you install will have manpage entries if the developer wrote them and included them as part of the installation process.
-For interactive tools such as the ones based on ncurses, help for the commands can often be accessed within the program using the `:help` command or typing `?`.
+যেমনটি আমরা শেল বক্তৃতায় দেখেছি, প্রথম-ক্রমের পদ্ধতিটি হল '-h' বা '-- help' ফ্ল্যাগগুলির সাথে উক্ত কমান্ডটি কল করা। আরও বিস্তারিত পদ্ধতি হল 'ম্যান' কমান্ড ব্যবহার করা।
+ম্যানুয়াল জন্য সংক্ষিপ্ত, ['man'] (https://www.man7.org/linux/man-pages/man1/man.1.html) আপনার নির্দিষ্ট কমান্ডের জন্য একটি ম্যানুয়াল পৃষ্ঠা (ম্যানপেজ নামে পরিচিত) সরবরাহ করে।
+উদাহরণস্বরূপ, 'man rm' আমাদের আগে দেখানো '-i' ফ্ল্যাগ সহ যে ফ্ল্যাগগুলি নেয় তার সাথে 'rm' কমান্ডের আচরণ আউটপুট করবে।
+আসলে, আমি এখন পর্যন্ত প্রতিটি কমান্ডের জন্য যা লিঙ্ক করছি তা হল কমান্ডগুলির জন্য লিনাক্স ম্যানপেজের অনলাইন সংস্করণ।
+এমনকি আপনার ইনস্টল করা অ-স্থানীয় কমান্ডগুলিতেও ম্যানপেজ এন্ট্রি থাকবে যদি ডেভেলপার সেগুলি লিখে ইনস্টলেশন প্রক্রিয়ার অংশ হিসাবে অন্তর্ভুক্ত করে।
+এনকার্সের উপর ভিত্তি করে ইন্টারেক্টিভ সরঞ্জামগুলির জন্য, কমান্ডগুলির জন্য সহায়তা প্রায়শই ': help' কমান্ড বা টাইপিং '?' ব্যবহার করে প্রোগ্রামের মধ্যে অ্যাক্সেস করা যেতে পারে।
 
-Sometimes manpages can provide overly detailed descriptions of the commands, making it hard to decipher what flags/syntax to use for common use cases.
-[TLDR pages](https://tldr.sh/) are a nifty complementary solution that focuses on giving example use cases of a command so you can quickly figure out which options to use.
-For instance, I find myself referring back to the tldr pages for [`tar`](https://tldr.inbrowser.app/pages/common/tar) and [`ffmpeg`](https://tldr.inbrowser.app/pages/common/ffmpeg) way more often than the manpages.
+কখনও কখনও ম্যানপেজগুলি কমান্ডগুলির অতিরিক্ত বিশদ বিবরণ প্রদান করতে পারে, যা সাধারণ ব্যবহারের ক্ষেত্রে কোন ফ্ল্যাগ/সিনট্যাক্স ব্যবহার করতে হবে তা বোঝা কঠিন করে তোলে।
+[টিএলডিআর পৃষ্ঠাগুলি] (https://tldr.sh/) একটি নিফটি পরিপূরক সমাধান যা একটি কমান্ডের উদাহরণ ব্যবহারের ক্ষেত্রে দৃষ্টি নিবদ্ধ করে যাতে আপনি কোন বিকল্পগুলি ব্যবহার করবেন তা দ্রুত নির্ধারণ করতে পারেন।
+উদাহরণস্বরূপ, আমি নিজেকে ম্যানপেজের চেয়ে প্রায়শই ['টার'] (https://tldr.inbrowser.app/pages/common/tar) এবং ['ffmpeg'] (https://tldr.inbrowser.app/pages/common/ffmpeg) এর জন্য টিএলডিআর পৃষ্ঠাগুলিতে উল্লেখ করছি।
 
 
-## Finding files
+##ফাইল খুঁজে বের করা
 
-One of the most common repetitive tasks that every programmer faces is finding files or directories.
-All UNIX-like systems come packaged with [`find`](https://www.man7.org/linux/man-pages/man1/find.1.html), a great shell tool to find files. `find` will recursively search for files matching some criteria. Some examples:
+প্রতিটি প্রোগ্রামার যে সবচেয়ে সাধারণ পুনরাবৃত্তিমূলক কাজের মুখোমুখি হয় তার মধ্যে একটি হল ফাইল বা ডিরেক্টরি খুঁজে বের করা।
+সমস্ত ইউনিক্স-মত সিস্টেমগুলি ['সন্ধান'] (https://www.man7.org/linux/man-pages/man1/find.1.html) ফাইলগুলি খুঁজে পেতে একটি দুর্দান্ত শেল সরঞ্জামের সাথে প্যাকেজ করা হয়। 'ফাইন্ড' কিছু মানদণ্ডের সাথে মিলে যাওয়া ফাইলগুলির জন্য পুনরাবৃত্তভাবে অনুসন্ধান করবে। কিছু উদাহরণঃ
 
 ```bash
 # Find all directories named src
@@ -204,8 +199,8 @@ find . -mtime -1
 # Find all zip files with size in range 500k to 10M
 find . -size +500k -size -10M -name '*.tar.gz'
 ```
-Beyond listing files, find can also perform actions over files that match your query.
-This property can be incredibly helpful to simplify what could be fairly monotonous tasks.
+ফাইলগুলি তালিকাভুক্ত করার বাইরে, ফাইন্ড আপনার প্রশ্নের সাথে মেলে এমন ফাইলগুলির উপরও কাজ করতে পারে।
+এই বৈশিষ্ট্যটি মোটামুটি একঘেয়ে কাজগুলি সহজ করার জন্য অবিশ্বাস্যভাবে সহায়ক হতে পারে।
 ```bash
 # Delete all files with .tmp extension
 find . -name '*.tmp' -exec rm {} \;
@@ -213,37 +208,38 @@ find . -name '*.tmp' -exec rm {} \;
 find . -name '*.png' -exec convert {} {}.jpg \;
 ```
 
-Despite `find`'s ubiquitousness, its syntax can sometimes be tricky to remember.
-For instance, to simply find files that match some pattern `PATTERN` you have to execute `find -name '*PATTERN*'` (or `-iname` if you want the pattern matching to be case insensitive).
-You could start building aliases for those scenarios, but part of the shell philosophy is that it is good to explore alternatives.
-Remember, one of the best properties of the shell is that you are just calling programs, so you can find (or even write yourself) replacements for some.
-For instance, [`fd`](https://github.com/sharkdp/fd) is a simple, fast, and user-friendly alternative to `find`.
-It offers some nice defaults like colorized output, default regex matching, and Unicode support. It also has, in my opinion, a more intuitive syntax.
-For example, the syntax to find a pattern `PATTERN` is `fd PATTERN`.
+'ফাইন্ড'-এর সর্বব্যাপীতা সত্ত্বেও, এর বাক্যবিন্যাস কখনও কখনও মনে রাখা কঠিন হতে পারে।
+উদাহরণস্বরূপ, 'প্যাটার্ন' প্যাটার্নের সাথে মেলে এমন ফাইলগুলি খুঁজে পেতে আপনাকে 'ফাইন্ড-নেম' * প্যাটার্ন * '(অথবা'-নেম 'যদি আপনি প্যাটার্নটি কেস সংবেদনশীল হতে চান) এক্সিকিউট করতে হবে।
+আপনি সেই পরিস্থিতিগুলির জন্য উপনাম তৈরি করা শুরু করতে পারেন, কিন্তু শেল দর্শনের অংশ হল বিকল্পগুলি অন্বেষণ করা ভাল।
+মনে রাখবেন, শেলের সর্বোত্তম বৈশিষ্ট্যগুলির মধ্যে একটি হল যে আপনি কেবল প্রোগ্রামগুলিতে কল করছেন, যাতে আপনি কিছু বিকল্প খুঁজে পেতে পারেন (এমনকি নিজেকে লিখতে পারেন)।
+উদাহরণস্বরূপ, ['fd'] (https://github.com/sharkdp/fd) একটি সহজ, দ্রুত এবং ব্যবহারকারী-বান্ধব বিকল্প 'খুঁজুন'।
+এটি রঙিন আউটপুট, ডিফল্ট রেজেক্স ম্যাচিং এবং ইউনিকোড সাপোর্টের মতো কিছু ভাল ডিফল্ট অফার করে। আমার মতে, এটির আরও স্বজ্ঞাত বাক্য গঠন রয়েছে।
+উদাহরণস্বরূপ, 'প্যাটার্ন' প্যাটার্ন খুঁজে বের করার জন্য সিনট্যাক্স হল 'এফডি প্যাটার্ন'।
 
-Most would agree that `find` and `fd` are good, but some of you might be wondering about the efficiency of looking for files every time versus compiling some sort of index or database for quickly searching.
-That is what [`locate`](https://www.man7.org/linux/man-pages/man1/locate.1.html) is for.
-`locate` uses a database that is updated using [`updatedb`](https://www.man7.org/linux/man-pages/man1/updatedb.1.html).
-In most systems, `updatedb` is updated daily via [`cron`](https://www.man7.org/linux/man-pages/man8/cron.8.html).
-Therefore one trade-off between the two is speed vs freshness.
-Moreover `find` and similar tools can also find files using attributes such as file size, modification time, or file permissions, while `locate` just uses the file name.
-A more in-depth comparison can be found [here](https://unix.stackexchange.com/questions/60205/locate-vs-find-usage-pros-and-cons-of-each-other).
+বেশিরভাগই একমত হবেন যে 'ফাইন্ড' এবং 'এফডি' ভাল, তবে আপনারা কেউ কেউ হয়তো দ্রুত অনুসন্ধানের জন্য কোনও ধরণের সূচক বা ডাটাবেস সংকলন বনাম প্রতিবার ফাইল খোঁজার দক্ষতা সম্পর্কে ভাবছেন।
+এটাই ['locate'] (https://www.man7.org/linux/man-pages/man1/locate.1.html) এর জন্য।
+'লোকেট' একটি ডাটাবেস ব্যবহার করে যা ['updateb'] ব্যবহার করে আপডেট করা হয় (https://www.man7.org/linux/man-pages/man1/updatedb.1.html)
+বেশিরভাগ সিস্টেমে, 'আপডেটবি' প্রতিদিন ['ক্রন'] এর মাধ্যমে আপডেট করা হয় (https://www.man7.org/linux/man-pages/man8/cron.8.html)
+অতএব, উভয়ের মধ্যে একটি বিনিময় হল গতি বনাম সতেজতা।
+উপরন্তু 'সন্ধান' এবং অনুরূপ সরঞ্জামগুলি ফাইলের আকার, পরিবর্তনের সময় বা ফাইল অনুমতির মতো বৈশিষ্ট্যগুলি ব্যবহার করে ফাইলগুলি খুঁজে পেতে পারে, যখন 'অবস্থান' কেবল ফাইলের নাম ব্যবহার করে।
+আরও গভীরতার তুলনা পাওয়া যাবে [এখানে] (https://unix.stackexchange.com/questions/60205/locate-vs-find-usage-pros-and-cons-of-each-other)
 
-## Finding code
 
-Finding files by name is useful, but quite often you want to search based on file *content*. 
-A common scenario is wanting to search for all files that contain some pattern, along with where in those files said pattern occurs.
-To achieve this, most UNIX-like systems provide [`grep`](https://www.man7.org/linux/man-pages/man1/grep.1.html), a generic tool for matching patterns from the input text.
-`grep` is an incredibly valuable shell tool that we will cover in greater detail during the data wrangling lecture.
+##কোড খুঁজুন
 
-For now, know that `grep` has many flags that make it a very versatile tool.
-Some I frequently use are `-C` for getting **C**ontext around the matching line and `-v` for in**v**erting the match, i.e. print all lines that do **not** match the pattern. For example, `grep -C 5` will print 5 lines before and after the match.
-When it comes to quickly searching through many files, you want to use `-R` since it will **R**ecursively go into directories and look for files for the matching string.
+নাম অনুসারে ফাইল খুঁজে পাওয়া দরকারী, তবে প্রায়শই আপনি ফাইল * কন্টেন্ট *-এর উপর ভিত্তি করে অনুসন্ধান করতে চান। 
+একটি সাধারণ দৃশ্যপট হল এমন সমস্ত ফাইল অনুসন্ধান করা যেখানে কিছু প্যাটার্ন রয়েছে, সেই ফাইলগুলির মধ্যে কোথায় প্যাটার্ন রয়েছে।
+এটি অর্জনের জন্য, বেশিরভাগ ইউনিক্স-মত সিস্টেমগুলি ['grep'] (https://www.man7.org/linux/man-pages/man1/grep.1.html) ইনপুট পাঠ্য থেকে নিদর্শনগুলি মেলানোর জন্য একটি জেনেরিক সরঞ্জাম সরবরাহ করে।
+'গ্রেপ' একটি অবিশ্বাস্যভাবে মূল্যবান শেল টুল যা আমরা ডেটা রেঙ্গলিং বক্তৃতার সময় আরও বিস্তারিতভাবে কভার করব।
 
-But `grep -R` can be improved in many ways, such as ignoring `.git` folders, using multi CPU support, &c.
-Many `grep` alternatives have been developed, including [ack](https://github.com/beyondgrep/ack3), [ag](https://github.com/ggreer/the_silver_searcher) and [rg](https://github.com/BurntSushi/ripgrep).
-All of them are fantastic and pretty much provide the same functionality.
-For now I am sticking with ripgrep (`rg`), given how fast and intuitive it is. Some examples:
+আপাতত, জেনে রাখুন যে 'গ্রেপ'-এর অনেকগুলি পতাকা রয়েছে যা এটিকে একটি বহুমুখী সরঞ্জাম করে তোলে।
+কিছু আমি প্রায়শই ব্যবহার করি '-সি' মেলানো লাইনের চারপাশে * * সি * * টেক্সট পাওয়ার জন্য এবং '-ভি' এর জন্য * * ভি * * ম্যাচটি ইর্ট করার জন্য, i.e। প্যাটার্নের সাথে মেলে না এমন সমস্ত লাইন মুদ্রণ করুন। উদাহরণস্বরূপ, 'গ্রেপ-সি 5' ম্যাচের আগে এবং পরে 5টি লাইন প্রিন্ট করবে।
+যখন অনেক ফাইলের মাধ্যমে দ্রুত অনুসন্ধানের কথা আসে, তখন আপনি '-R' ব্যবহার করতে চান কারণ এটি * * R * * ইকারসিভভাবে ডিরেক্টরিগুলিতে যাবে এবং ম্যাচিং স্ট্রিংয়ের জন্য ফাইলগুলি সন্ধান করবে।
+
+কিন্তু 'grep-R' অনেক উপায়ে উন্নত করা যেতে পারে, যেমন '. git' ফোল্ডার উপেক্ষা করা, মাল্টি সিপিইউ সমর্থন ব্যবহার করা, এবং সি।
+অনেকগুলি 'গ্রেপ' বিকল্প তৈরি করা হয়েছে, যার মধ্যে রয়েছে [ack] (https://github.com/beyondgrep/ack3) [ag] (https://github.com/ggreer/the_silver_searcher) এবং [rg] (https://github.com/BurntSushi/ripgrep)
+এগুলির সবগুলিই দুর্দান্ত এবং প্রায় একই কার্যকারিতা সরবরাহ করে।
+এই মুহুর্তে আমি রিপগ্রেপ ('আরজি') এর সাথে লেগে আছি এটি কতটা দ্রুত এবং স্বজ্ঞাত। কিছু উদাহরণঃ
 ```bash
 # Find all python files where I used the requests library
 rg -t py 'import requests'
@@ -255,127 +251,102 @@ rg foo -A 5
 rg --stats PATTERN
 ```
 
-Note that as with `find`/`fd`, it is important that you know that these problems can be quickly solved using one of these tools, while the specific tools you use are not as important.
+মনে রাখবেন যে 'ফাইন্ড'/'এফডি' এর মতো, এটি গুরুত্বপূর্ণ যে আপনি জানেন যে এই সমস্যাগুলি এই সরঞ্জামগুলির মধ্যে একটি ব্যবহার করে দ্রুত সমাধান করা যেতে পারে, যদিও আপনি যে নির্দিষ্ট সরঞ্জামগুলি ব্যবহার করেন সেগুলি ততটা গুরুত্বপূর্ণ নয়।
 
-## Finding shell commands
+##শেল কমান্ড খুঁজে বের করা
 
-So far we have seen how to find files and code, but as you start spending more time in the shell, you may want to find specific commands you typed at some point.
-The first thing to know is that typing the up arrow will give you back your last command, and if you keep pressing it you will slowly go through your shell history.
+এখন পর্যন্ত আমরা দেখেছি কিভাবে ফাইল এবং কোড খুঁজে বের করতে হয়, কিন্তু যখন আপনি শেলের মধ্যে আরও বেশি সময় ব্যয় করতে শুরু করেন, তখন আপনি কোনও সময়ে টাইপ করা নির্দিষ্ট কমান্ডগুলি খুঁজে পেতে চাইতে পারেন।
+প্রথমে যা জানতে হবে তা হল উপরের তীরটি টাইপ করা আপনাকে আপনার শেষ কমান্ডটি ফিরিয়ে দেবে এবং আপনি যদি এটি টিপতে থাকেন তবে আপনি ধীরে ধীরে আপনার শেল ইতিহাসের মধ্য দিয়ে যাবেন।
 
-The `history` command will let you access your shell history programmatically.
-It will print your shell history to the standard output.
-If we want to search there we can pipe that output to `grep` and search for patterns.
-`history | grep find` will print commands that contain the substring "find".
+'ইতিহাস' কমান্ড আপনাকে প্রোগ্রামগতভাবে আপনার শেল ইতিহাস অ্যাক্সেস করতে দেবে।
+এটি আপনার শেলের ইতিহাসকে স্ট্যান্ডার্ড আউটপুটে মুদ্রণ করবে।
+আমরা যদি সেখানে অনুসন্ধান করতে চাই তবে আমরা সেই আউটপুটটি 'গ্রেপ'-এ পাইপ করতে পারি এবং নিদর্শনগুলি অনুসন্ধান করতে পারি।
+'হিস্টোরি। grep ফাইন্ড' এমন কমান্ড প্রিন্ট করবে যা সাবস্ট্রিং 'ফাইন্ড' ধারণ করে।
 
-In most shells, you can make use of `Ctrl+R` to perform backwards search through your history.
-After pressing `Ctrl+R`, you can type a substring you want to match for commands in your history.
-As you keep pressing it, you will cycle through the matches in your history.
-This can also be enabled with the UP/DOWN arrows in [zsh](https://github.com/zsh-users/zsh-history-substring-search).
-A nice addition on top of `Ctrl+R` comes with using [fzf](https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings#ctrl-r) bindings.
-`fzf` is a general-purpose fuzzy finder that can be used with many commands.
-Here it is used to fuzzily match through your history and present results in a convenient and visually pleasing manner.
+বেশিরভাগ শেলগুলিতে, আপনি 'Ctrl + R' ব্যবহার করে আপনার ইতিহাস জুড়ে পিছনের দিকে অনুসন্ধান করতে পারেন।
+'Ctrl + R' চাপার পর, আপনি আপনার ইতিহাসে কমান্ডের সাথে মিল রাখতে চান এমন একটি সাবস্ট্রিং টাইপ করতে পারেন।
+আপনি যখন এটি চাপতে থাকবেন, আপনি আপনার ইতিহাসের ম্যাচগুলির মধ্য দিয়ে সাইকেল চালাবেন।
+এটি [zsh] এ UP/DOWN তীর দিয়ে সক্ষম করা যেতে পারে (https://github.com/zsh-users/zsh-history-substring-search)
+'Ctrl + R' এর উপরে একটি চমৎকার সংযোজন [fzf] (https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings #ctrl-r) বাইন্ডিং ব্যবহার করে আসে।
+'fzf' একটি সাধারণ উদ্দেশ্যের ফাজি ফাইন্ডার যা অনেক কমান্ডের সাথে ব্যবহার করা যেতে পারে।
+এখানে এটি আপনার ইতিহাসের সাথে অস্পষ্টভাবে মেলাতে এবং সুবিধাজনক এবং দৃশ্যত আনন্দদায়ক পদ্ধতিতে ফলাফল উপস্থাপন করতে ব্যবহৃত হয়।
 
-Another cool history-related trick I really enjoy is **history-based autosuggestions**.
-First introduced by the [fish](https://fishshell.com/) shell, this feature dynamically autocompletes your current shell command with the most recent command that you typed that shares a common prefix with it.
-It can be enabled in [zsh](https://github.com/zsh-users/zsh-autosuggestions) and it is a great quality of life trick for your shell.
+ইতিহাস সম্পর্কিত আরেকটি চমৎকার কৌশল যা আমি সত্যিই উপভোগ করি তা হল * * ইতিহাস-ভিত্তিক স্ব-পরামর্শ * *।
+প্রথমে [মাছ] (https://fishshell.com/) শেল দ্বারা প্রবর্তিত, এই বৈশিষ্ট্যটি গতিশীলভাবে আপনার বর্তমান শেল কমান্ডটিকে আপনি টাইপ করেছেন এমন সাম্প্রতিকতম কমান্ডের সাথে স্বয়ংক্রিয়ভাবে সম্পন্ন করে যা এটির সাথে একটি সাধারণ উপসর্গ ভাগ করে।
+এটি [zsh] (https://github.com/zsh-users/zsh-autosuggestions) এ সক্ষম করা যেতে পারে এবং এটি আপনার শেলের জন্য একটি দুর্দান্ত মানের জীবন কৌশল।
 
-You can modify your shell's history behavior, like preventing commands with a leading space from being included. This comes in handy when you are typing commands with passwords or other bits of sensitive information.
-To do this, add `HISTCONTROL=ignorespace` to your `.bashrc` or `setopt HIST_IGNORE_SPACE` to your `.zshrc`.
-If you make the mistake of not adding the leading space, you can always manually remove the entry by editing your `.bash_history` or `.zsh_history`.
+আপনি আপনার শেলের ইতিহাসের আচরণ পরিবর্তন করতে পারেন, যেমন একটি নেতৃস্থানীয় স্থান সহ কমান্ডগুলিকে অন্তর্ভুক্ত করা থেকে বিরত রাখা। আপনি যখন পাসওয়ার্ড বা অন্যান্য সংবেদনশীল তথ্য দিয়ে কমান্ড টাইপ করেন তখন এটি কাজে আসে।
+এটি করার জন্য, আপনার '. bashrc' তে 'HISTCONTROL = Ignorespace' অথবা আপনার '. zshrc' এ 'setopt HIST _ IGNORE _ SPACE' যোগ করুন।
+আপনি যদি শীর্ষস্থানীয় স্থান যোগ না করার ভুল করেন তবে আপনি সর্বদা আপনার '. bash _ history' বা '. zsh _ history' সম্পাদনা করে ম্যানুয়ালি এন্ট্রিটি সরিয়ে ফেলতে পারেন।
 
-## Directory Navigation
+##ডিরেক্টরি নেভিগেশন
 
-So far, we have assumed that you are already where you need to be to perform these actions. But how do you go about quickly navigating directories?
-There are many simple ways that you could do this, such as writing shell aliases or creating symlinks with [ln -s](https://www.man7.org/linux/man-pages/man1/ln.1.html), but the truth is that developers have figured out quite clever and sophisticated solutions by now.
+এখন পর্যন্ত, আমরা ধরে নিয়েছি যে এই ক্রিয়াগুলি সম্পাদন করার জন্য আপনার যেখানে থাকা দরকার সেখানে আপনি ইতিমধ্যে রয়েছেন। কিন্তু কিভাবে আপনি দ্রুত ডিরেক্টরি নেভিগেট করবেন?
+আপনি এটি করতে পারেন এমন অনেকগুলি সহজ উপায় রয়েছে, যেমন শেল উপনামগুলি লেখা বা [ln-s] (https://www.man7.org/linux/man-pages/man1/ln.1.html) এর সাথে সিমলিঙ্ক তৈরি করা তবে সত্যটি হ 'ল বিকাশকারীরা এখন বেশ চতুর এবং পরিশীলিত সমাধানগুলি খুঁজে পেয়েছেন।
 
-As with the theme of this course, you often want to optimize for the common case.
-Finding frequent and/or recent files and directories can be done through tools like [`fasd`](https://github.com/clvv/fasd) and [`autojump`](https://github.com/wting/autojump).
-Fasd ranks files and directories by [_frecency_](https://web.archive.org/web/20210421120120/https://developer.mozilla.org/en-US/docs/Mozilla/Tech/Places/Frecency_algorithm), that is, by both _frequency_ and _recency_.
-By default, `fasd` adds a `z` command that you can use to quickly `cd` using a substring of a _frecent_ directory. For example, if you often go to `/home/user/files/cool_project` you can simply use `z cool` to jump there. Using autojump, this same change of directory could be accomplished using `j cool`.
+এই কোর্সের থিমের মতো, আপনি প্রায়শই সাধারণ ক্ষেত্রে অপ্টিমাইজ করতে চান।
+ঘন ঘন এবং/অথবা সাম্প্রতিক ফাইল এবং ডিরেক্টরিগুলি সন্ধান করা ['fasd'] (https://github.com/clvv/fasd) এবং ['autojump'] (https://github.com/wting/autojump) এর মতো সরঞ্জামগুলির মাধ্যমে করা যেতে পারে।
+Fasd ফাইল এবং ডিরেক্টরিগুলিকে [_ Frecency _] (https://web.archive.org/web/20210421120120/https:// developer. mozilla. org/en-US/docs/Mozilla/Tech/Places/Frecency _ algorithm) দ্বারা স্থান দেয়, অর্থাৎ _ frequency _ এবং _ recency _ উভয় দ্বারা।
+ডিফল্টরূপে, 'fasd' একটি 'z' কমান্ড যোগ করে যা আপনি a _ frecent _ directory এর একটি সাবস্ট্রিং ব্যবহার করে দ্রুত 'cd' ব্যবহার করতে পারেন। উদাহরণস্বরূপ, আপনি যদি প্রায়শই '/home/user/files/কূল _ প্রজেক্ট'-এ যান তবে সেখানে ঝাঁপ দেওয়ার জন্য আপনি কেবল 'z কুল' ব্যবহার করতে পারেন। অটোজাম্প ব্যবহার করে, ডিরেক্টরির এই একই পরিবর্তন 'জে কুল' ব্যবহার করে সম্পন্ন করা যেতে পারে।
 
-More complex tools exist to quickly get an overview of a directory structure: [`tree`](https://linux.die.net/man/1/tree), [`broot`](https://github.com/Canop/broot) or even full fledged file managers like [`nnn`](https://github.com/jarun/nnn) or [`ranger`](https://github.com/ranger/ranger).
+ডিরেক্টরি কাঠামোর একটি সংক্ষিপ্ত বিবরণ দ্রুত পেতে আরও জটিল সরঞ্জাম রয়েছেঃ ['বৃক্ষ'] (https://linux.die.net/man/1/tree) ['ব্রুট'] (https://github.com/Canop/broot) বা এমনকি ['nnn'] (https://github.com/jarun/nnn) বা ['রেঞ্জার'] (https://github.com/ranger/ranger)
 
-# Exercises
+# ব্যায়াম
 
-1. Read [`man ls`](https://www.man7.org/linux/man-pages/man1/ls.1.html) and write an `ls` command that lists files in the following manner
+1টি। পড়ুন ['man ls'] (https://www.man7.org/linux/man-pages/man1/ls.1.html) এবং একটি 'ls' কমান্ড লিখুন যা নিম্নলিখিত পদ্ধতিতে ফাইলগুলি তালিকাভুক্ত করে
 
-    - Includes all files, including hidden files
-    - Sizes are listed in human readable format (e.g. 454M instead of 454279954)
-    - Files are ordered by recency
-    - Output is colorized
+    - লুকানো ফাইল সহ সমস্ত ফাইল অন্তর্ভুক্ত করে
+    - আকারগুলি মানব পাঠযোগ্য বিন্যাসে তালিকাভুক্ত করা হয়েছে (e.g. 454M instead of 454279954)
+    - ফাইলগুলি পুনরাবৃত্তি দ্বারা অর্ডার করা হয়-আউটপুট রঙিন করা হয়
 
-    A sample output would look like this
+    একটি নমুনা আউটপুট এইরকম দেখাবে
 
-    ```
-    -rw-r--r--   1 user group 1.1M Jan 14 09:53 baz
-    drwxr-xr-x   5 user group  160 Jan 14 09:53 .
-    -rw-r--r--   1 user group  514 Jan 14 06:42 bar
-    -rw-r--r--   1 user group 106M Jan 13 12:12 foo
-    drwx------+ 47 user group 1.5K Jan 12 18:08 ..
+    '-rw-r---- 1 ব্যবহারকারী গ্রুপ 1.1 M জানুয়ারী 14.09:53 বাজ drwxr-xr-x 5 ব্যবহারকারী গ্রুপ 160 জানুয়ারি 14.09:53. - rw-r---- 1 ব্যবহারকারী গ্রুপ  514 জানুয়ারি 14.06:42 বার
+    - rw-r---- 1 ব্যবহারকারী গ্রুপ 106M জানুয়ারী 13.12:12 foo drwx-------+ 47 ব্যবহারকারী গ্রুপ 1.5 K জানুয়ারি 12.18:8..
     ```
 
-{% comment %}
-ls -lath --color=auto
-{% endcomment %}
+{% মন্তব্য%}
+ls-lath-- রঙ = স্বয়ংক্রিয়
+{% endcomment%}
 
-1. Write bash functions  `marco` and `polo` that do the following.
-Whenever you execute `marco` the current working directory should be saved in some manner, then when you execute `polo`, no matter what directory you are in, `polo` should `cd` you back to the directory where you executed `marco`.
-For ease of debugging you can write the code in a file `marco.sh` and (re)load the definitions to your shell by executing `source marco.sh`.
+1টি। ব্যাশ ফাংশন 'মার্কো' এবং 'পোলো' লিখুন যা নিম্নলিখিতগুলি করে।
+যখনই আপনি 'মার্কো' এক্সিকিউট করবেন তখন বর্তমান ওয়ার্কিং ডিরেক্টরিটি কোনওভাবে সংরক্ষণ করা উচিত, তারপর যখন আপনি 'পোলো' এক্সিকিউট করবেন, আপনি যে ডিরেক্টরিতে থাকুন না কেন, 'পোলো' আপনাকে সেই ডিরেক্টরিতে 'সিডি' করতে হবে যেখানে আপনি 'মার্কো' এক্সিকিউট করেছেন।
+ডিবাগিংয়ের স্বাচ্ছন্দ্যের জন্য আপনি একটি ফাইলে কোডটি লিখতে পারেন 'marco.sh' এবং (পুনরায়) 'source marco.sh' এক্সিকিউট করে আপনার শেলটিতে সংজ্ঞা লোড করুন।
 
-{% comment %}
-marco() {
-    export MARCO=$(pwd)
-}
+{% comment%} মার্কো () {রপ্তানি মার্কো = $(পিডব্লিউডি)}
 
-polo() {
-    cd "$MARCO"
-}
-{% endcomment %}
+পোলো () {cd "$MARCO"}
+{% endcomment%}
 
-1. Say you have a command that fails rarely. In order to debug it you need to capture its output but it can be time consuming to get a failure run.
-Write a bash script that runs the following script until it fails and captures its standard output and error streams to files and prints everything at the end.
-Bonus points if you can also report how many runs it took for the script to fail.
+1টি। ধরুন আপনার কাছে এমন একটি কমান্ড রয়েছে যা খুব কমই ব্যর্থ হয়। এটিকে ডিবাগ করার জন্য আপনাকে এর আউটপুট ক্যাপচার করতে হবে তবে ব্যর্থতা চালাতে সময় লাগতে পারে।
+একটি ব্যাশ স্ক্রিপ্ট লিখুন যা নিম্নলিখিত স্ক্রিপ্টটি চালায় যতক্ষণ না এটি ব্যর্থ হয় এবং এর স্ট্যান্ডার্ড আউটপুট এবং ত্রুটি ফাইলগুলিতে প্রবাহিত হয় এবং শেষে সবকিছু মুদ্রণ করে।
+বোনাস পয়েন্ট যদি আপনি স্ক্রিপ্টটি ব্যর্থ হতে কত রান লেগেছে তাও জানাতে পারেন।
 
-    ```bash
-    #!/usr/bin/env bash
+    'বাশ #!/ইউএসআর/বিন/এনভ বাশ
 
-    n=$(( RANDOM % 100 ))
+    n = $((র্যান্ডম% 100))
 
-    if [[ n -eq 42 ]]; then
-       echo "Something went wrong"
-       >&2 echo "The error was using magic numbers"
-       exit 1
-    fi
+    যদি [[n-eq 42]]; তারপর প্রতিধ্বনি "কিছু ভুল হয়েছে"> এবং 2 প্রতিধ্বনি "ত্রুটিটি জাদু সংখ্যা ব্যবহার করছিল" প্রস্থান 1 ফাই
 
-    echo "Everything went according to plan"
-    ```
+    প্রতিধ্বনি 'সবকিছু পরিকল্পনা অনুযায়ী হয়েছে' '
 
-{% comment %}
-#!/usr/bin/env bash
+{% comment%} #!/usr/bin/env bash
 
-count=0
-until [[ "$?" -ne 0 ]];
-do
-  count=$((count+1))
-  ./random.sh &> out.txt
-done
+গণনা = 0 পর্যন্ত ["$?" - ne 0]]; do ঎ণ্ণ = $((গণনা + 1))./random. sh &> out.txt সম্পন্ন
 
-echo "found error after $count runs"
-cat out.txt
-{% endcomment %}
+echo "$count run এর পরে ত্রুটি পাওয়া গেছে" cat out.txt {% endcomment%}
 
-1. As we covered in the lecture `find`'s `-exec` can be very powerful for performing operations over the files we are searching for.
-However, what if we want to do something with **all** the files, like creating a zip file?
-As you have seen so far commands will take input from both arguments and STDIN.
-When piping commands, we are connecting STDOUT to STDIN, but some commands like `tar` take inputs from arguments.
-To bridge this disconnect there's the [`xargs`](https://www.man7.org/linux/man-pages/man1/xargs.1.html) command which will execute a command using STDIN as arguments.
-For example `ls | xargs rm` will delete the files in the current directory.
+1টি। যেমনটি আমরা এই বক্তৃতায় উল্লেখ করেছি যে আমরা যে ফাইলগুলি খুঁজছি সেগুলির উপর অপারেশন সম্পাদনের জন্য 's'-exec 'খুব শক্তিশালী হতে পারে।
+কিন্তু, আমরা যদি * * সমস্ত * * ফাইল দিয়ে জিপ ফাইল তৈরি করার মতো কিছু করতে চাই, তাহলে কী হবে?
+আপনি এখন পর্যন্ত দেখেছেন যে কমান্ডগুলি আর্গুমেন্ট এবং STDIN উভয় থেকে ইনপুট নেবে।
+কমান্ডগুলি পাইপ করার সময়, আমরা STDOUT-কে STDIN-এর সাথে সংযুক্ত করছি, তবে 'টার'-এর মতো কিছু কমান্ড আর্গুমেন্ট থেকে ইনপুট নেয়।
+এই সংযোগ বিচ্ছিন্ন করার জন্য ['xargs'] (https://www.man7.org/linux/man-pages/man1/xargs.1.html) কমান্ড রয়েছে যা STDIN কে আর্গুমেন্ট হিসাবে ব্যবহার করে একটি কমান্ড কার্যকর করবে।
+উদাহরণস্বরূপ, 'ls। xargs rm' বর্তমান ডিরেক্টরির ফাইলগুলি মুছে ফেলবে।
 
-    Your task is to write a command that recursively finds all HTML files in the folder and makes a zip with them. Note that your command should work even if the files have spaces (hint: check `-d` flag for `xargs`).
-    {% comment %}
-    find . -type f -name "*.html" | xargs -d '\n'  tar -cvzf archive.tar.gz
-    {% endcomment %}
+    আপনার কাজ হল একটি কমান্ড লেখা যা পুনরাবৃত্তভাবে ফোল্ডারে সমস্ত এইচটিএমএল ফাইল খুঁজে পায় এবং সেগুলি দিয়ে একটি জিপ তৈরি করে। মনে রাখবেন যে ফাইলগুলিতে স্পেস থাকলেও আপনার কমান্ডটি কাজ করবে (ইঙ্গিতঃ 'xargs'-এর জন্য '-d' ফ্ল্যাগ পরীক্ষা করুন)
+    {% comment%} খুঁজে বের করুন। - type f-name "*. html"। xargs-d '\n' tor-cvzf archive.tar.gz
+    {% endcomment%}
 
-    If you're on macOS, note that the default BSD `find` is different from the one included in [GNU coreutils](https://en.wikipedia.org/wiki/List_of_GNU_Core_Utilities_commands). You can use `-print0` on `find` and the `-0` flag on `xargs`. As a macOS user, you should be aware that command-line utilities shipped with macOS may differ from the GNU counterparts; you can install the GNU versions if you like by [using brew](https://formulae.brew.sh/formula/coreutils).
+    আপনি যদি ম্যাকোসে থাকেন তবে মনে রাখবেন যে ডিফল্ট বিএসডি 'সন্ধান' [জিএনইউ কোরুটিলস] (https://en.wikpedia.org/wiki/List_of_GNU_Core_Utilities_commands) এর অন্তর্ভুক্ত একটির থেকে আলাদা। আপনি 'ফাইন্ড'-এ '-print0' এবং 'xargs'-এ '-0' ফ্ল্যাগ ব্যবহার করতে পারেন। ম্যাকোস ব্যবহারকারী হিসাবে, আপনার সচেতন হওয়া উচিত যে ম্যাকোসের সাথে প্রেরিত কমান্ড-লাইন ইউটিলিটিগুলি জিএনইউ সমকক্ষদের থেকে পৃথক হতে পারে; আপনি যদি চান তবে জিএনইউ সংস্করণগুলি ইনস্টল করতে পারেন [ব্রিউ ব্যবহার করে] (https://formulee.brew.sh/formula/coreutils)
 
-1. (Advanced) Write a command or script to recursively find the most recently modified file in a directory. More generally, can you list all files by recency?
+1. (Advanced) একটি ডিরেক্টরিতে সাম্প্রতিকতম পরিবর্তিত ফাইলটি পুনরাবৃত্তিমূলকভাবে খুঁজে পেতে একটি কমান্ড বা স্ক্রিপ্ট লিখুন। আরও সাধারণভাবে, আপনি কি পুনরাবৃত্তি অনুসারে সমস্ত ফাইল তালিকাভুক্ত করতে পারেন?
